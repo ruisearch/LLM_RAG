@@ -13,21 +13,29 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 
 memory = ConversationBufferMemory(input_key="question", output_key="answer", return_messages=True)
-STANDALONE = ChatPromptTemplate.from_messages([
-    ("system", """Given the following conversation and a follow-up question, rephrase the follow-up question to be a standalone question."""),
-    ("human", """Chat History:
+standalone_templete = """Given the following conversation and a follow-up question, rephrase the follow-up question to be a standalone question.
+
+Chat History:
 {chat_history}
 
-Follow Up Input:{question}
-Standalone question:
-"""
-)
-])
+Follow Up Input: {question}
+Standalone question:"""
 
-DOCUMENT_TO_STR = PromptTemplate.from_template(template=
-"""
-Source Document: {source}, Page {page}:\n{page_content}
-""")
+# STANDALONE = ChatPromptTemplate.from_messages([
+#     ("system", """Given the following conversation and a follow-up question, rephrase the follow-up question to be a standalone question."""),
+#     ("human", """Chat History:
+# {chat_history}
+
+# Follow Up Input:{question}
+# Standalone question:
+# """
+# )
+# ])
+STANDALONE = PromptTemplate.from_template(standalone_templete)
+
+DOCUMENT_TO_STR = PromptTemplate.from_template(
+    template= "Source Document: {source}, Page {page}:\n{page_content}"
+)
 
 system_prompt = """You're a helpful research assistant, who answers questions based on provided research documents in a clear way and easy-to-understand way.
 If there are no research documents, or the research documents are irrelevant to answering the question, simply reply that you can't answer.
@@ -72,7 +80,7 @@ def getChatChain(llm: ChatOllama, db: Chroma):
     }
 
     # 2. retrieve documents
-    retriever = db.as_retriever(kwargs={"k":20})
+    retriever = db.as_retriever(search_kwargs={"k":20})
     retrieved_documents = {
         "docs": itemgetter("standalone_question") | retriever,
         "question": lambda x: x["standalone_question"]
@@ -88,8 +96,8 @@ def getChatChain(llm: ChatOllama, db: Chroma):
     answer = {
         "answer": final_inputs
         | FINAL_QUESTION
-        | llm.with_config(callbacks=[StreamingStdOutCallbackHandler])
-        | (lambda x:x.content if hasattr(x,"content") else x),
+        | llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]),
+        # | (lambda x:x.content if hasattr(x,"content") else x),
         "docs": itemgetter("docs")
     }
 
