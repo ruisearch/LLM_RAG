@@ -57,25 +57,25 @@ def parse_parameters() -> argparse.Namespace:
         "-m",
         "--model",
         default="llama3:8b",
-        help="The name of the LLM"
+        help="The name of the LLM. Defaults to llama3:8b"
     )
     parser.add_argument(
         "-e",
         "--embedding_model",
         default="nomic-embed-text",
-        help="The name of embedding model"
+        help="The name of embedding model. Defaults to nomic-embed-text"
     )
     parser.add_argument(
         "-p",
         "--path",
         default="Research",
-        help="The path to the directory containing documents to load"
+        help="The path to the directory containing documents to load. Defaults to ./Research/"
     )
     parser.add_argument(
         "-r",
         "--reload",
         default="True",
-        help="Whether reload the database. please type True or False",
+        help="Whether reload the database. please type True or False. Defaults to True",
     )
     return parser.parse_args()
 
