@@ -6,7 +6,7 @@ from document_loader import load_document_into_database
 from llm import getChatChain
 
 
-def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload_str:str) ->None:
+def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload_str:str, debug_str:str) ->None:
     """
     1. prepare llm and embedding model;
     2. store document in vector database;
@@ -28,6 +28,11 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload
         reload = False
     else:
         reload = True
+
+    if debug_str.lower() == "false":
+        debug = False
+    else:
+        debug = True
     # store document
     try:
         # db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
@@ -38,7 +43,7 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload
 
     # chat
     llm = ChatOllama(model=llm_model_name)
-    chat = getChatChain(llm,db)
+    chat = getChatChain(llm,db,debug)
 
     # session
     while True:
@@ -77,8 +82,14 @@ def parse_parameters() -> argparse.Namespace:
         default="True",
         help="Whether reload the database. please type True or False. Defaults to True",
     )
+    parser.add_argument(
+        "-d",
+        "--debug",
+        default="False",
+        help="Whether print the debug information. please type True or False. Defaults to False",
+    )
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_parameters()
-    main(args.model, args.embedding_model, args.path, args.reload)
+    main(args.model, args.embedding_model, args.path, args.reload, args.debug)

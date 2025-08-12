@@ -2,6 +2,7 @@
 construct a chat session
 """
 from operator import itemgetter
+import time
 from langchain.memory import ConversationBufferMemory
 from langchain_ollama import ChatOllama
 from langchain_community.vectorstores import Chroma
@@ -63,7 +64,7 @@ def _get_memory():
         _memory_instance = ConversationBufferMemory(return_messages=True, output_key="answer", input_key="question")
     return _memory_instance
 
-def getChatChain(llm: ChatOllama, db: Chroma):
+def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
     """
     generate the chat session (chat chain):
     1. standalone question
@@ -75,6 +76,7 @@ def getChatChain(llm: ChatOllama, db: Chroma):
     Args:
         llm (ChatOllama): the llm model
         db (Chroma): the vector db
+        debug (bool): whether print debug information(time cost)
     """
     # 1. standalone question
     memory = _get_memory()
@@ -94,9 +96,21 @@ def getChatChain(llm: ChatOllama, db: Chroma):
     }
 
     # 2. retrieve documents
+    def measure_retrieval_time(input_dict):
+        start_time = time.time()
+        # docs = retriever.get_relevant_documents(input_dict["standalone_question"])
+        docs = retriever.invoke(input_dict["standalone_question"])
+        end_time = time.time()
+        retrieval_time = (end_time - start_time) * 1000  # to ms
+        if debug:
+            # print time cost for debug
+            print(f"## DEBUG: Query time: {retrieval_time:.2f} ms (returned {len(docs)} documents)")
+        return docs
+
     retriever = db.as_retriever(search_kwargs={"k":20})
     retrieved_documents = {
-        "docs": itemgetter("standalone_question") | retriever,
+        # "docs": itemgetter("standalone_question") | retriever,
+        "docs": measure_retrieval_time,
         "question": lambda x: x["standalone_question"]
     }
 
@@ -107,10 +121,21 @@ def getChatChain(llm: ChatOllama, db: Chroma):
     }
     
     # 4. answer
+    def measure_llm_time(input_dict):
+        start_time = time.time()
+        # LLM reason
+        response = llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]).invoke(input_dict)
+        end_time = time.time()
+        llm_time = (end_time - start_time) * 1000  # to ms
+        if debug:
+            # print time cost for debug
+            print(f"\n## DEBUG: LLM response time: {llm_time:.2f} ms")
+        return response
     answer = {
         "answer": final_inputs
         | FINAL_QUESTION
-        | llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]),
+        | measure_llm_time,
+        # | llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]),
         # | (lambda x:x.content if hasattr(x,"content") else x),
         "docs": itemgetter("docs")
     }
@@ -122,8 +147,14 @@ def getChatChain(llm: ChatOllama, db: Chroma):
             clear_conversation_history()
         else:
             inputs = {"question":question}
+            total_start_time = time.time()
             # invoke
             result = final_chain.invoke(inputs)
+            total_end_time = time.time()
+            total_time = (total_end_time - total_start_time) * 1000  # to ms
+            if debug:
+                # print total time cost
+                print(f"## DEBUG: Total time: {total_time:.2f} ms")
             # store memory
             memory.save_context(inputs, {"answer": result["answer"].content if hasattr(result["answer"], "content") else result["answer"]})
 
