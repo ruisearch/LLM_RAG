@@ -12,7 +12,7 @@ from langchain_core.messages import get_buffer_string
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 
-memory = ConversationBufferMemory(input_key="question", output_key="answer", return_messages=True)
+# memory = ConversationBufferMemory(input_key="question", output_key="answer", return_messages=True)
 standalone_templete = """Given the following conversation and a follow-up question, rephrase the follow-up question to be a standalone question.
 
 Chat History:
@@ -51,6 +51,18 @@ FINAL_QUESTION = ChatPromptTemplate.from_messages([
 {question}""")
 ])
 
+# memory instance
+_memory_instance = None
+
+def _get_memory():
+    """
+    get the memory instance. Create it if not exists
+    """
+    global _memory_instance
+    if _memory_instance is None:
+        _memory_instance = ConversationBufferMemory(return_messages=True, output_key="answer", input_key="question")
+    return _memory_instance
+
 def getChatChain(llm: ChatOllama, db: Chroma):
     """
     generate the chat session (chat chain):
@@ -65,6 +77,8 @@ def getChatChain(llm: ChatOllama, db: Chroma):
         db (Chroma): the vector db
     """
     # 1. standalone question
+    memory = _get_memory()
+
     loaded_memory = RunnablePassthrough.assign(
         chat_history=RunnableLambda(memory.load_memory_variables)
         | itemgetter("history")
@@ -129,6 +143,7 @@ def _combine_documents(docs: list, String_format=DOCUMENT_TO_STR, \
     return separator.join(doc_strings)
 
 def clear_conversation_history():
-    global memory
-    memory.clear()
-    print("Conversation history cleared.")
+    global _memory_instance
+    if _memory_instance is not None:
+        _memory_instance.clear()
+        print("Conversation history cleared.")
