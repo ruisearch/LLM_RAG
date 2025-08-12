@@ -6,7 +6,7 @@ from document_loader import load_document_into_database
 from llm import getChatChain
 
 
-def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload_str:str, debug_str:str) ->None:
+def main(llm_model_name:str, embedding_model_name:str, document_path:str, storage:str, reload_str:str, debug_str:str) ->None:
     """
     1. prepare llm and embedding model;
     2. store document in vector database;
@@ -36,7 +36,7 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload
     # store document
     try:
         # db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
-        db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path, reload=reload)
+        db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path, reload=reload, storage=storage)
     except Exception as e:
         print(e)
         sys.exit()
@@ -77,6 +77,12 @@ def parse_parameters() -> argparse.Namespace:
         help="The path to the directory containing documents to load. Defaults to ./Research/"
     )
     parser.add_argument(
+        "-s",
+        "--storage",
+        default="storage",
+        help="The path to the directory containing database. Defaults to ./storage/"
+    )
+    parser.add_argument(
         "-r",
         "--reload",
         default="True",
@@ -92,4 +98,4 @@ def parse_parameters() -> argparse.Namespace:
 
 if __name__ == "__main__":
     args = parse_parameters()
-    main(args.model, args.embedding_model, args.path, args.reload, args.debug)
+    main(args.model, args.embedding_model, args.path, args.storage, args.reload, args.debug)

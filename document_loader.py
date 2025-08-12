@@ -8,20 +8,21 @@ from langchain_community.vectorstores import Chroma
 from langchain_ollama import OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-PERSIST_DIRECTORY = "storage"
+
 TEXT_SPLITTER = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
-def load_document_into_database(model_name: str, documents_path: str, reload: bool = True) -> Chroma:
+def load_document_into_database(model_name: str, documents_path: str, reload: bool, storage: str) -> Chroma:
     """load_docuemnt_into_database
 
     Args:
         model_name (str): name of embedding model
         docuements_path (str): path to the directory containing all documents
         reload (bool, optional): Whether load documents in this run. Defaults to True.
-
+        storage (str): path to the dir containing database
     Returns:
         Chroma: the vector database
     """
+    PERSIST_DIRECTORY = storage
     if reload:
         # reload
         documents = load_documents(documents_path)

@@ -135,6 +135,7 @@ cython_debug/
 
 .DS_Store
 storage
+temp_storage
 
 # pdf folder and generator
 Manual_Pdf
