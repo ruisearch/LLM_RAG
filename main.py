@@ -6,7 +6,7 @@ from document_loader import load_document_into_database
 from llm import getChatChain
 
 
-def main(llm_model_name:str, embedding_model_name:str, document_path:str) ->None:
+def main(llm_model_name:str, embedding_model_name:str, document_path:str, reload_str:str) ->None:
     """
     1. prepare llm and embedding model;
     2. store document in vector database;
@@ -24,9 +24,14 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str) ->None
         print(e)
         sys.exit()
 
+    if reload_str.lower() == "false":
+        reload = False
+    else:
+        reload = True
     # store document
     try:
-        db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
+        # db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
+        db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path, reload=reload)
     except Exception as e:
         print(e)
         sys.exit()
@@ -66,8 +71,14 @@ def parse_parameters() -> argparse.Namespace:
         default="Research",
         help="The path to the directory containing documents to load"
     )
+    parser.add_argument(
+        "-r",
+        "--reload",
+        default="True",
+        help="Whether reload the database. please type True or False",
+    )
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_parameters()
-    main(args.model, args.embedding_model, args.path)
+    main(args.model, args.embedding_model, args.path, args.reload)
