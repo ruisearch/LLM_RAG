@@ -30,13 +30,14 @@ def load_document_into_database(model_name: str, documents_path: str, reload: bo
         chunks = TEXT_SPLITTER.split_documents(documents)
 
         # embedding and store
-        print("store documents in chroma database")
+        print(f"\nstore documents in chroma database, located in {PERSIST_DIRECTORY}\n")
         return Chroma.from_documents(
             documents=chunks,
             embedding=OllamaEmbeddings(model=model_name),
             persist_directory=PERSIST_DIRECTORY
         )
     else:
+        print(f"\nread documents in chroma database, located in {PERSIST_DIRECTORY}\n")
         # read
         return Chroma(
             embedding_function=OllamaEmbeddings(model=model_name),

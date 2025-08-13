@@ -40,6 +40,13 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, storag
     except Exception as e:
         print(e)
         sys.exit()
+    
+    # count the stored vectors (chunks)
+    try:
+        vector_count = db._collection.count()
+        print(f"\n{vector_count} vectors in the chroma database.\n")
+    except Exception as e:
+        print(f"\ncan not count the vectors: {e}\n")
 
     # chat
     llm = ChatOllama(model=llm_model_name)
