@@ -3,6 +3,7 @@ construct a chat session
 """
 from operator import itemgetter
 import time
+import json
 from langchain.memory import ConversationBufferMemory
 from langchain_ollama import ChatOllama
 from langchain_community.vectorstores import Chroma
@@ -119,6 +120,21 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
         "context": lambda x:_combine_documents(x["docs"]),
         "question": itemgetter("question")
     }
+
+    def question_str(question:dict):
+        """transform the doc from document to str"""
+        context = _combine_documents(question["docs"])
+        standalone_question = question["question"]
+        final_question = {
+            "context": context,
+            "question": standalone_question
+        }
+        if debug:
+            # record the final question
+            with open("_debug.json",'w', encoding="utf-8") as f:
+                json.dump(final_question, f, indent=4)
+            print("## DEBUG: the question is recorded in _debug.json")
+        return final_question
     
     # 4. answer
     def measure_llm_time(input_dict):
@@ -132,7 +148,8 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
             print(f"\n## DEBUG: LLM response time: {llm_time:.2f} ms")
         return response
     answer = {
-        "answer": final_inputs
+        # "answer": final_inputs
+        "answer": question_str
         | FINAL_QUESTION
         | measure_llm_time,
         # | llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]),

@@ -136,8 +136,15 @@ cython_debug/
 .DS_Store
 storage
 temp_storage
+100_storage
+1000_storage
 
 # pdf folder and generator
 Manual_Pdf
 Pdf
 pdf_gen.py
+100_pdfs
+1000_pdfs
+
+# log json
+_debug.json
