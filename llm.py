@@ -4,6 +4,8 @@ construct a chat session
 from operator import itemgetter
 import time
 import json
+import os
+import psutil
 from langchain.memory import ConversationBufferMemory
 from langchain_ollama import ChatOllama
 from langchain_community.vectorstores import Chroma
@@ -86,32 +88,69 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
         chat_history=RunnableLambda(memory.load_memory_variables)
         | itemgetter("history")
     )
-    standalone = {
-        "standalone_question":{
-            "question":lambda x: x["question"],
-            "chat_history": lambda x: get_buffer_string(x["chat_history"])
-        }
-        | STANDALONE
-        | llm
-        | (lambda x:x.content if hasattr(x, "content") else x)
-    }
+    # standalone = {
+    #     "standalone_question":{
+    #         "question":lambda x: x["question"],
+    #         "chat_history": lambda x: get_buffer_string(x["chat_history"])
+    #     }
+    #     | STANDALONE
+    #     | llm
+    #     | (lambda x:x.content if hasattr(x, "content") else x)
+    # }
 
+    def standalone(question_and_memory:dict):
+        """return the standalone question
+
+        Args:
+            question_and_memory (dict): "question" key is the user input while \
+                "chat_history" key is the chat_history
+
+        Returns:
+            dict: only one key named "standalone_question" with the value of the standalone question str
+        """
+        chat_history = get_buffer_string(question_and_memory["chat_history"])
+        if debug:
+            with open("_debug.txt", "w", encoding="utf-8") as f:
+                # json.dump({"chat_history":chat_history}, f, indent=4)
+                f.write(f"chat_history: {chat_history}\n\n")
+        if chat_history != "":
+            # has chat_history, need to LLM to generate the final question
+            if debug:
+                print("## DEBUG: has history, generate the standalone question by LLM")
+            question_info = {
+                "question":question_and_memory["question"],
+                "chat_history": chat_history
+            }
+            standalone_prompt = STANDALONE.invoke(question_info)
+            llm_return = llm.invoke(standalone_prompt)
+            return {
+                "standalone_question":llm_return.content if hasattr(llm_return, "content") else llm_return
+            }
+        else:
+            # no history, the standalone question is the user input
+            return {
+                "standalone_question": question_and_memory["question"]
+            }
     # 2. retrieve documents
-    def measure_retrieval_time(input_dict):
+    def measure_retrieval_cost(input_dict):
         start_time = time.time()
+        start_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
         # docs = retriever.get_relevant_documents(input_dict["standalone_question"])
         docs = retriever.invoke(input_dict["standalone_question"])
         end_time = time.time()
+        end_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
         retrieval_time = (end_time - start_time) * 1000  # to ms
+        retrieval_mem = (end_memory - start_memory)
         if debug:
             # print time cost for debug
             print(f"## DEBUG: Query time: {retrieval_time:.2f} ms (returned {len(docs)} documents)")
+            print(f"## DEBUG: Query mem cost: {retrieval_mem} MB")
         return docs
 
     retriever = db.as_retriever(search_kwargs={"k":20})
     retrieved_documents = {
         # "docs": itemgetter("standalone_question") | retriever,
-        "docs": measure_retrieval_time,
+        "docs": measure_retrieval_cost,
         "question": lambda x: x["standalone_question"]
     }
 
@@ -131,9 +170,10 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
         }
         if debug:
             # record the final question
-            with open("_debug.json",'w', encoding="utf-8") as f:
-                json.dump(final_question, f, indent=4)
-            print("## DEBUG: the question is recorded in _debug.json")
+            with open("_debug.txt",'a', encoding="utf-8") as f:
+                f.write(f"context: {final_question['context']}\n\n")
+                f.write(f"question: {final_question['question']}\n\n")
+            print("## DEBUG: the question is recorded in _debug.txt")
         return final_question
     
     # 4. answer

@@ -1,5 +1,5 @@
 [project]
-name = "local-llm-with-rag"
+name = "LLM_RAG"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -14,4 +14,5 @@ dependencies = [
     "streamlit==1.42.0",
     "tqdm==4.67.1",
     "watchdog==6.0.0",
+    "psutil==5.9.0",
 ]
