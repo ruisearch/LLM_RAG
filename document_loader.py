@@ -1,5 +1,5 @@
 """
-load document in vector database using embedding model
+load document in chroma vector database using embedding model
 """
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader, TextLoader
 import os

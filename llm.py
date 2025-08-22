@@ -3,9 +3,9 @@ construct a chat session
 """
 from operator import itemgetter
 import time
-import json
 import os
 import psutil
+# from memory_profiler import profile
 from langchain.memory import ConversationBufferMemory
 from langchain_ollama import ChatOllama
 from langchain_community.vectorstores import Chroma
@@ -135,7 +135,18 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
     def measure_retrieval_cost(input_dict):
         start_time = time.time()
         start_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
-        # docs = retriever.get_relevant_documents(input_dict["standalone_question"])
+
+        # @profile
+        # def retrieve():
+        #     return retriever.invoke(input_dict["standalone_question"])
+        # # docs = retriever.invoke(input_dict["standalone_question"])
+        # if debug:
+        #     print("## DEBUG: Cost Mem:")
+        #     # print mem usage by profile
+        #     docs = retrieve()
+        # else:
+            # docs = retriever.invoke(input_dict["standalone_question"])
+
         docs = retriever.invoke(input_dict["standalone_question"])
         end_time = time.time()
         end_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
