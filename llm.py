@@ -144,7 +144,7 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
         if debug:
             # print time cost for debug
             print(f"## DEBUG: Query time: {retrieval_time:.2f} ms (returned {len(docs)} documents)")
-            print(f"## DEBUG: Query mem cost: {retrieval_mem} MB")
+            print(f"## DEBUG: Query mem cost: {retrieval_mem:.2f} MB")
         return docs
 
     retriever = db.as_retriever(search_kwargs={"k":20})

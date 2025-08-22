@@ -1,9 +1,12 @@
 import argparse
+import os
 import sys
+import time
 from langchain_ollama import ChatOllama
 from models import check_if_model_is_available
 from document_loader import load_document_into_database
 from llm import getChatChain
+import psutil
 
 
 def main(llm_model_name:str, embedding_model_name:str, document_path:str, storage:str, reload_str:str, debug_str:str) ->None:
@@ -36,7 +39,16 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, storag
     # store document
     try:
         # db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
+        start_time = time.time()
+        start_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
         db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path, reload=reload, storage=storage)
+        end_time = time.time()
+        end_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
+        if debug:
+            load_time = (end_time - start_time)*1000
+            load_mem = (end_memory - start_memory)*1000
+            print(f"\n## DEBUG: database initialization costs {load_time:.2f} ms\n")
+            print(f"\n## DEBUG: database initialization costs {load_mem:.2f} MB\n")
     except Exception as e:
         print(e)
         sys.exit()
