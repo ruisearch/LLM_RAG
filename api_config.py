@@ -18,7 +18,8 @@ class APIConfigManager:
             "env_var": "DASHSCOPE_API_KEY"
         },
         "openai": {
-            "base_url": "https://api.openai.com/v1",
+            # "base_url": "https://api.openai.com/v1",
+            "base_url": "https://sg.uiuiapi.com/v1", # use UIUIAPI
             "env_var": "OPENAI_API_KEY"
         },
         "deepseek": {
