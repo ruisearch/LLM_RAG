@@ -31,11 +31,29 @@ def load_document_into_database(model_name: str, documents_path: str, reload: bo
 
         # embedding and store
         print(f"\nstore documents in chroma database, located in {PERSIST_DIRECTORY}\n")
-        return Chroma.from_documents(
-            documents=chunks,
-            embedding=OllamaEmbeddings(model=model_name),
-            persist_directory=PERSIST_DIRECTORY
-        )
+        
+        # 尝试不同的ollama服务地址
+        base_urls = [
+            "http://127.0.0.1:11434",
+            "http://localhost:11434",
+            "http://0.0.0.0:11434"
+        ]
+        
+        for base_url in base_urls:
+            try:
+                embedding = OllamaEmbeddings(model=model_name, base_url=base_url)
+                # 测试连接
+                embedding.embed_query("test")
+                print(f"成功连接到ollama嵌入服务: {base_url}")
+                return Chroma.from_documents(
+                    documents=chunks,
+                    embedding=embedding,
+                    persist_directory=PERSIST_DIRECTORY
+                )
+            except Exception:
+                continue
+        
+        raise Exception("无法连接到ollama嵌入服务，请检查ollama是否正在运行")
     else:
         print(f"\nread documents in chroma database, located in {PERSIST_DIRECTORY}\n")
         # read

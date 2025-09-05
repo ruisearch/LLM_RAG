@@ -3,13 +3,14 @@ import os
 import sys
 import time
 from langchain_ollama import ChatOllama
-from models import check_if_model_is_available
+from models import check_if_model_is_available, create_llm
 from document_loader import load_document_into_database
 from llm import getChatChain
 import psutil
 
 
-def main(llm_model_name:str, embedding_model_name:str, document_path:str, storage:str, reload_str:str, debug_str:str) ->None:
+def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
+    storage:str, reload_str:str, debug_str:str, local: str) ->None:
     """
     1. prepare llm and embedding model;
     2. store document in vector database;
@@ -20,13 +21,6 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, storag
         embedding_model_name (str): name of embedding model
         document_path (str): path to the directory containing documents
     """
-    try:
-        check_if_model_is_available(llm_model_name)
-        check_if_model_is_available(embedding_model_name)
-    except Exception as e:
-        print(e)
-        sys.exit()
-
     if reload_str.lower() == "false":
         reload = False
     else:
@@ -36,6 +30,22 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, storag
         debug = False
     else:
         debug = True
+    
+    if local.lower() == "true":
+        local_model = True
+    else:
+        local_model = False
+    try:
+        # check llm model (local or API)
+        print("\n---- check LLM ----\n")
+        check_if_model_is_available(llm_model_name, local_model)
+        # check embedding model (local)
+        print("\n---- check embedding model ----\n")
+        check_if_model_is_available(embedding_model_name, local_model)
+    except Exception as e:
+        print(e)
+        sys.exit()
+
     # store document
     try:
         # db = load_document_into_database(model_name=embedding_model_name, documents_path=document_path)
@@ -61,7 +71,8 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, storag
         print(f"\ncan not count the vectors: {e}\n")
 
     # chat
-    llm = ChatOllama(model=llm_model_name)
+    # get llm 
+    llm = create_llm(model_name=llm_model_name, is_local=local_model)
     chat = getChatChain(llm,db,debug)
 
     # session
@@ -113,8 +124,14 @@ def parse_parameters() -> argparse.Namespace:
         default="False",
         help="Whether print the debug information. please type True or False. Defaults to False",
     )
+    parser.add_argument(
+        "-l",
+        "--local",
+        default="True",
+        help="Whether use local model. True=local model, False=API model. Default is True",
+    )
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_parameters()
-    main(args.model, args.embedding_model, args.path, args.storage, args.reload, args.debug)
+    main(args.model, args.embedding_model, args.path, args.storage, args.reload, args.debug, args.local)

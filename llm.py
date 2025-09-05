@@ -67,7 +67,7 @@ def _get_memory():
         _memory_instance = ConversationBufferMemory(return_messages=True, output_key="answer", input_key="question")
     return _memory_instance
 
-def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
+def getChatChain(llm, db: Chroma, debug:bool):
     """
     generate the chat session (chat chain):
     1. standalone question
@@ -77,7 +77,7 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
     5. chat
 
     Args:
-        llm (ChatOllama): the llm model
+        llm : the llm model
         db (Chroma): the vector db
         debug (bool): whether print debug information(time cost)
     """
@@ -158,7 +158,9 @@ def getChatChain(llm: ChatOllama, db: Chroma, debug:bool):
             print(f"## DEBUG: Query mem cost: {retrieval_mem:.2f} MB")
         return docs
 
-    retriever = db.as_retriever(search_kwargs={"k":20})
+    # retriever = db.as_retriever(search_kwargs={"k":20})
+    # just think about the top 3 chunks for efficiency as well as reducing the context for LLM
+    retriever = db.as_retriever(search_kwargs={"k":3})
     retrieved_documents = {
         # "docs": itemgetter("standalone_question") | retriever,
         "docs": measure_retrieval_cost,
