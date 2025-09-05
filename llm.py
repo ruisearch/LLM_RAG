@@ -152,8 +152,8 @@ def getChatChain(llm, db: Chroma, debug:bool, local_model: bool):
         return docs
 
     # retriever = db.as_retriever(search_kwargs={"k":20})
-    # just think about the top 3 chunks for efficiency as well as reducing the context for LLM
-    retriever = db.as_retriever(search_kwargs={"k":3})
+    # just think about the top 5 chunks for efficiency as well as reducing the context for LLM
+    retriever = db.as_retriever(search_kwargs={"k":5})
     # retrieved_documents = {
     #     # "docs": itemgetter("standalone_question") | retriever,
     #     "docs": measure_retrieval_cost,
