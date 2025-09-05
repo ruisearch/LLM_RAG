@@ -160,5 +160,3 @@ def infer_provider(model_name: str) -> Optional[str]:
     """
     manager = APIConfigManager()
     return manager._infer_provider(model_name)
-
-

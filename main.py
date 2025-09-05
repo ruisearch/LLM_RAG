@@ -41,7 +41,8 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
         check_if_model_is_available(llm_model_name, local_model)
         # check embedding model (local)
         print("\n---- check embedding model ----\n")
-        check_if_model_is_available(embedding_model_name, local_model)
+        # embedding model is local
+        check_if_model_is_available(embedding_model_name, True)
     except Exception as e:
         print(e)
         sys.exit()
@@ -73,7 +74,7 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
     # chat
     # get llm 
     llm = create_llm(model_name=llm_model_name, is_local=local_model)
-    chat = getChatChain(llm,db,debug)
+    chat = getChatChain(llm,db,debug,local_model)
 
     # session
     while True:

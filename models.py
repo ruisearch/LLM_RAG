@@ -8,6 +8,7 @@ from tqdm import tqdm
 from api_config import get_api_config
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
+from pydantic import SecretStr
 
 
 def __pull_model(name: str) -> None:
@@ -123,11 +124,13 @@ def create_llm(model_name: str, is_local: bool = True):
         if api_config is None:
             raise Exception(f"API model {model_name} API Key not configured")
 
+        api_key_str = api_config['api_key']
+        # print("key:",api_key_str)
         try:
             # Create LLM object using OpenAI compatible interface
             return ChatOpenAI(
                 model=model_name,
-                api_key=api_config['api_key'],
+                api_key=SecretStr(api_key_str) if api_key_str else None,
                 base_url=api_config['base_url'],
                 temperature=0.1 # set 0.1 for reproducibility
             )
