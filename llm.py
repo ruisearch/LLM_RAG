@@ -43,7 +43,7 @@ DOCUMENT_TO_STR = PromptTemplate.from_template(
 
 system_prompt = """You're a helpful research assistant, who answers questions based on provided research documents in a clear way and easy-to-understand way.
 If there are no research documents, or the research documents are irrelevant to answering the question, simply reply that you can't answer.
-Please reply with just the detailed answer and your sources. 
+Please reply with just the brief answer.
 If you're unable to answer the question, do not list sources.
 """
 FINAL_QUESTION = ChatPromptTemplate.from_messages([

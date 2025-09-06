@@ -10,7 +10,7 @@ from pydantic import SecretStr
 system_prompt = """
 You're a helpful research assistant, who answers questions based on provided research documents in a clear way and easy-to-understand way.
 If there are no research documents, or the research documents are irrelevant to answering the question, simply reply that you can't answer.
-Please reply with just the detailed answer and your sources. 
+Please reply with just the brief answer
 If you're unable to answer the question, do not list sources.
 """
 human_prompt = """
@@ -136,24 +136,27 @@ try:
         {'role': 'user', 'content': human_prompt}
         ]
     
-    response = client.invoke(messages)
-    # print(response.model_dump_json()["content"])
-    print(response.content)
+    # response = client.invoke(messages)
+    # # print(response.model_dump_json()["content"])
+    # print(response.content)
     
-    # # 使用 get_openai_callback() 上下文管理器来捕获 token 消耗
-    # from langchain.callbacks import get_openai_callback
-    # with get_openai_callback() as cb:
-    #     response = client.invoke(messages)
-    #     # print(response.model_dump_json()["content"])
-    #     print(response.content)
-    #     print("\n--- Token 消耗详情 ---")
-    #     print(f"总 token: {cb.total_tokens}")
-    #     print(f"提示 token: {cb.prompt_tokens}")
-    #     print(f"补全 token: {cb.completion_tokens}")
+    # 使用 get_openai_callback() 上下文管理器来捕获 token 消耗
+    from langchain.callbacks import get_openai_callback
+    with get_openai_callback() as cb:
+        response = client.invoke(messages)
+        # print(response.model_dump_json()["content"])
+        print(response.content)
+        print("\n--- Token 消耗详情 ---")
+        print(f"总 token: {cb.total_tokens}")
+        print(f"提示 token: {cb.prompt_tokens}")
+        print(f"补全 token: {cb.completion_tokens}")
     """
     two time exps for token cost of gpt-oss:
     exp1 : total tokens: 4840, prompt_token: 1336, completion_tokens:  3504
     exp2 : total tokens: 3343, prompt_token: 1336, completion_tokens:  2007
+
+    change the prompt into "Please reply with just the brief answer":
+    exp1 : total tokens: 2034, prompt_token: 1332, completion_tokens:  702
     """
 except Exception as e:
     print(f"错误信息：{e}")

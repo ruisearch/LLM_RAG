@@ -118,18 +118,26 @@ supports smooth operational transitions for inverters [5].
 As inverter-based resources continue to expand, accurate
 """
 ]
+# response = """
+# The challenges in estimating output impedance in inverter-based grids, as outlined in the provided research document, are:
+
+# 1. **Lack of Global or Network-Wide Measurements**: Inverters typically do not have access to global system data or measurements from other parts of the grid. This limits their ability to directly measure or estimate the effective grid voltage, which is essential for accurate impedance estimation.
+
+# 2. **Insufficient Persistence of Excitation in Measured Signals**: Accurate impedance estimation requires input signals that sufficiently excite all dynamic modes of the system (i.e., persistent excitation). However, measured signals at the inverter often lack this property, especially under steady-state operation, making it difficult to reliably identify the impedance parameters.
+
+# 3. **Limited Measurable Variables**: Inverters operate primarily in steady state and can only measure local quantities—specifically, the output voltage and current at their terminals. The line impedance and grid voltage are not directly measurable, and their indirect estimation is complicated by the absence of external data and signal richness.
+
+# These challenges are compounded by dynamic changes in the power network such as load fluctuations, addition/removal of power sources, and environmental factors like temperature, which cause the actual grid impedance to vary significantly over time. Therefore, real-time, accurate, and non-invasive impedance estimation methods are crucial for maintaining stable power injection and ensuring effective control strategies in modern inverter-dominated grids.
+
+# Source: Research Document — *Inverter Output Impedance Estimation in Power Networks: A Variable Direction Forgetting Recursive-Least-Square Algorithm Based Approach* (Pages 0–1)
+# """
 response = """
-The challenges in estimating output impedance in inverter-based grids, as outlined in the provided research document, are:
+The main challenges are:  
 
-1. **Lack of Global or Network-Wide Measurements**: Inverters typically do not have access to global system data or measurements from other parts of the grid. This limits their ability to directly measure or estimate the effective grid voltage, which is essential for accurate impedance estimation.
-
-2. **Insufficient Persistence of Excitation in Measured Signals**: Accurate impedance estimation requires input signals that sufficiently excite all dynamic modes of the system (i.e., persistent excitation). However, measured signals at the inverter often lack this property, especially under steady-state operation, making it difficult to reliably identify the impedance parameters.
-
-3. **Limited Measurable Variables**: Inverters operate primarily in steady state and can only measure local quantities—specifically, the output voltage and current at their terminals. The line impedance and grid voltage are not directly measurable, and their indirect estimation is complicated by the absence of external data and signal richness.
-
-These challenges are compounded by dynamic changes in the power network such as load fluctuations, addition/removal of power sources, and environmental factors like temperature, which cause the actual grid impedance to vary significantly over time. Therefore, real-time, accurate, and non-invasive impedance estimation methods are crucial for maintaining stable power injection and ensuring effective control strategies in modern inverter-dominated grids.
-
-Source: Research Document — *Inverter Output Impedance Estimation in Power Networks: A Variable Direction Forgetting Recursive-Least-Square Algorithm Based Approach* (Pages 0–1)
+1. **Limited measurement scope** – Inverters only see local voltage and current; they lack global or network‑wide data needed to estimate the effective grid voltage.
+2. **Insufficient excitation** – The signals measured at the inverter often do not contain enough persistence of excitation, which is essential for accurate impedance estimation.
+3. **Steady‑state operation** – Inverters normally operate at steady state, so only local output voltage and current are measurable, while the line impedance and grid voltage must be inferred indirectly.
+4. **Dynamic grid variations** – The Thevenin‑equivalent impedance can change rapidly due to load fluctuations, source additions/removals, and environmental factors, adding uncertainty to the estimation.
 """
 reference = "Estimating output impedance in inverter-based grids is challenging due to dynamic grid conditions, which require real-time estimation. Traditional methods like signal injection and historical data analysis have limitations, such as sensitivity to noise and complexity."
 try:
@@ -160,7 +168,7 @@ try:
     cost = end_time - start_time
     print(f"evaluation costs {cost:.2f} s") # 17.96 s
     
-    # use call back of Langchain to compute the token cost
+    # # use call back of Langchain to compute the token cost
     # from langchain.callbacks import get_openai_callback # 导入回调函数
     # with get_openai_callback() as cb:
     #     start_time = time.time()
@@ -178,6 +186,7 @@ try:
     #     print(f"提示 token: {cb.prompt_tokens}")
     #     print(f"补全 token: {cb.completion_tokens}")
     #     print(f"总花费: ${cb.total_cost:.4f}")
+
     """
     two time exps for token cost of rags:
     exp1 : total tokens: 10913, prompt_token: 8343, completion_tokens:  2570
