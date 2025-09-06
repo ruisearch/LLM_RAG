@@ -1,0 +1,6 @@
+Abstractive: 55
+Extractive: 45
+Text-only: 69
+Text-image: 19
+Text-table: 6
+Text-table-image: 6
