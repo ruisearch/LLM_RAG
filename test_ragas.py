@@ -164,6 +164,9 @@ try:
     print(result)
     # first exp:{'context_recall': 0.5000, 'faithfulness': 0.9231, 'factual_correctness(mode=f1)': 0.1300}
     # second exp: {'context_recall': 0.5000, 'faithfulness': 0.8462, 'factual_correctness(mode=f1)': 0.2700}
+    # use gpt-5:
+    # {'context_recall': 0.5000, 'faithfulness': 0.6154, 'factual_correctness(mode=f1)': 0.0000}
+    # evaluation costs 78.29 s
     end_time = time.time()
     cost = end_time - start_time
     print(f"evaluation costs {cost:.2f} s") # 17.96 s
