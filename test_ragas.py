@@ -159,5 +159,29 @@ try:
     end_time = time.time()
     cost = end_time - start_time
     print(f"evaluation costs {cost:.2f} s") # 17.96 s
+    
+    # use call back of Langchain to compute the token cost
+    # from langchain.callbacks import get_openai_callback # 导入回调函数
+    # with get_openai_callback() as cb:
+    #     start_time = time.time()
+    #     result = evaluate(
+    #         dataset=evaluation_dataset,
+    #         metrics=[LLMContextRecall(), Faithfulness(), FactualCorrectness()],
+    #         llm=evaluator_llm
+    #     )
+    #     end_time = time.time()
+
+    #     print(result)
+    #     print(f"evaluation costs {end_time - start_time:.2f} s")
+    #     print("--- Token 消耗详情 ---")
+    #     print(f"总 token: {cb.total_tokens}")
+    #     print(f"提示 token: {cb.prompt_tokens}")
+    #     print(f"补全 token: {cb.completion_tokens}")
+    #     print(f"总花费: ${cb.total_cost:.4f}")
+    """
+    two time exps for token cost of rags:
+    exp1 : total tokens: 10913, prompt_token: 8343, completion_tokens:  2570
+    exp2 : total tokens: 11431, prompt_token: 8445, completion_tokens:  2986
+    """
 except Exception as e:
     print(f"错误信息：{e}")
