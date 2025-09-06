@@ -1,5 +1,5 @@
 """
-the official API usage of qwen3-30b-a3b-instruct-2507 model
+test accessing gpt-oss-20b by API under langchain
 """
 
 import os

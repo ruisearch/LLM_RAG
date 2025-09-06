@@ -1,4 +1,4 @@
-Deploy LLM locally and process RAG.
+Local RAG system. The retriever is local while the LLM can be local or remote (by API).
 
 # Requirements
 

@@ -139,6 +139,7 @@ temp_storage
 100_storage
 1000_storage
 _storage
+openrag_bench_storage
 
 # pdf folder and generator
 Manual_Pdf
