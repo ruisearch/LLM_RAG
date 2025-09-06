@@ -150,3 +150,6 @@ pdf_gen.py
 
 # log json
 _debug.txt
+
+# script to sample openragbench
+sample.py

@@ -6,20 +6,29 @@ from langchain_ollama import ChatOllama
 from models import check_if_model_is_available, create_llm
 from document_loader import load_document_into_database
 from llm import getChatChain
+from batch_test import batch_test
 import psutil
 
 
 def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
-    storage:str, reload_str:str, debug_str:str, local: str) ->None:
+    storage:str, reload_str:str, debug_str:str, local: str,\
+        batch_mode: bool = False, questions_file: str = "", output_file: str = "", context_file: str = "") ->None:
     """
     1. prepare llm and embedding model;
     2. store document in vector database;
-    3. prepare chat
-    4. chat
+    3. prepare chat or batch testing
+    4. chat (not batch testing)
     Args:
         llm_model_name (str): name of llm
         embedding_model_name (str): name of embedding model
         document_path (str): path to the directory containing documents
+        reload_str: Whether to reload database (string format)
+        debug_str: Whether to enable debug mode (string format)
+        local: Whether to use local model (True=local, False=API)
+        batch_mode: Whether to use batch testing mode
+        questions_file: Questions file path (batch mode, default empty string)
+        output_file: Output JSON file path (batch mode, default empty string)
+        context_file: Context JSON file path (batch mode, default empty string)
     """
     if reload_str.lower() == "false":
         reload = False
@@ -74,18 +83,25 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
     # chat
     # get llm 
     llm = create_llm(model_name=llm_model_name, is_local=local_model)
-    chat = getChatChain(llm,db,debug,local_model)
 
-    # session
-    while True:
-        try:
-            user_input = input("\n\nPlease enter your question (or type 'exit' to end): ").strip()
-            if user_input.lower() == "exit":
+    if batch_mode:
+        # Batch testing mode
+        if not questions_file or not output_file or not context_file:
+            print("Batch mode requires questions file, output file and context file paths")
+            sys.exit(1)
+        batch_test(llm, db, questions_file, output_file, context_file, debug, local_model)
+    else:
+        # Interactive mode
+        chat = getChatChain(llm,db,debug,local_model)
+        while True:
+            try:
+                user_input = input("\n\nPlease enter your question (or type 'exit' to end): ").strip()
+                if user_input.lower() == "exit":
+                    break
+                else:
+                    chat(user_input)
+            except KeyboardInterrupt:
                 break
-            else:
-                chat(user_input)
-        except KeyboardInterrupt:
-            break
 
 def parse_parameters() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run local LLM and RAG with Ollama")
@@ -131,8 +147,30 @@ def parse_parameters() -> argparse.Namespace:
         default="True",
         help="Whether use local model. True=local model, False=API model. Default is True",
     )
+    parser.add_argument(
+    "--batch",
+    action="store_true",
+    help="Enable batch testing mode",
+    )
+    parser.add_argument(
+        "-q", "--questions",
+        default="",
+        help="Path to questions JSON file for batch testing",
+    )
+    parser.add_argument(
+        "-o", "--output",
+        default="",
+        help="Path to results JSON file for batch testing",
+    )
+    parser.add_argument(
+        "-c", "--context",
+        default="",
+        help="Path to context JSON file for batch testing",
+    )
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_parameters()
-    main(args.model, args.embedding_model, args.path, args.storage, args.reload, args.debug, args.local)
+    main(args.model, args.embedding_model, args.path, args.storage, \
+        args.reload, args.debug, args.local, args.batch, args.questions,\
+            args.output, args.context)

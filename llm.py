@@ -138,7 +138,6 @@ def getChatChain(llm, db: Chroma, debug:bool, local_model: bool):
         start_time = time.time()
         start_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
 
-
         # docs = retriever.invoke(input_dict["standalone_question"])
         docs = retriever.invoke(input_dict["question"])
         end_time = time.time()
@@ -190,32 +189,14 @@ def getChatChain(llm, db: Chroma, debug:bool, local_model: bool):
         return final_question
     
     # 4. answer
-    def measure_llm_time(input_dict):
-        start_time = time.time()
-        # LLM reason
-        if local_model:
-        # local model, use Streaming to output the answer
-            response = llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]).invoke(input_dict)
-        else:
-            # for API model, just invoke because this model may not support output streaming by StreamingStdOutCallbackHandler()
-            response = llm.invoke(input_dict)
-            # API model, need to output the answer
-            final_answer = response
-            if hasattr(final_answer, "content"):
-                print(f"{final_answer.content}")
-            else:
-                print(f"{final_answer}")
-        end_time = time.time()
-        llm_time = (end_time - start_time) * 1000  # to ms
-        if debug:
-            # print time cost for debug
-            print(f"\n## DEBUG: LLM response time: {llm_time:.2f} ms")
-        return response
+    # Create metrics dictionary for this chat chain
+    metrics = {}
+
     answer = {
         # "answer": final_inputs
         "answer": question_str
         | FINAL_QUESTION
-        | measure_llm_time,
+        | (lambda x: measure_llm_time(llm, x, local_model, debug, metrics)),
         "docs": itemgetter("docs")
     }
 
@@ -226,6 +207,8 @@ def getChatChain(llm, db: Chroma, debug:bool, local_model: bool):
         # if question.lower() == "/clear":
         #     clear_conversation_history()
         # else:
+        # Clear metrics for this chat session
+        metrics.clear()
         inputs = {"question":question}
         total_start_time = time.time()
         # invoke
@@ -253,6 +236,146 @@ def _combine_documents(docs: list, String_format=DOCUMENT_TO_STR, \
     doc_strings = [format_document(doc, String_format) for doc in docs]
     return separator.join(doc_strings)
 
+def measure_llm_time(llm, input_dict, local_model: bool, debug: bool, metrics_dict=None):
+    """
+    Measure LLM response time and invoke the model
+    
+    Args:
+        llm: LLM model object
+        input_dict: Input dictionary for the LLM
+        local_model: Whether using local model
+        debug: Whether to enable debug mode
+        metrics_dict: Dictionary to store performance metrics
+        
+    Returns:
+        Response from the LLM
+    """
+    start_time = time.time()
+    # LLM reason
+    if local_model:
+    # local model, use Streaming to output the answer
+        response = llm.with_config(callbacks=[StreamingStdOutCallbackHandler()]).invoke(input_dict)
+    else:
+        # for API model, just invoke because this model may not support output streaming by StreamingStdOutCallbackHandler()
+        response = llm.invoke(input_dict)
+        # API model, need to output the answer
+        final_answer = response
+        if hasattr(final_answer, "content"):
+            print(f"{final_answer.content}")
+        else:
+            print(f"{final_answer}")
+    end_time = time.time()
+    llm_time = (end_time - start_time) * 1000  # to ms
+    if debug:
+        # print time cost for debug
+        print(f"\n## DEBUG: LLM response time: {llm_time:.2f} ms")
+    
+    # Store performance metrics in the provided dictionary
+    if metrics_dict is not None:
+        metrics_dict['llm_time'] = llm_time
+    
+    return response
+
+
+
+def process_single_question(llm, retriever, question: str, debug: bool, local_model: bool):
+    """
+    Process single question independently (for batch testing)
+    Uses the same complete chain as getChatChain from retrieval to answer generation
+    
+    Args:
+        llm: LLM model object
+        retriever: Retriever object
+        question: Question text
+        debug: Whether to enable debug mode
+        local_model: Whether using local model
+        
+    Returns:
+        dict: Dictionary containing answer, context and performance metrics
+    """
+    try:
+        # Create metrics dictionary to store performance metrics
+        metrics = {}
+        
+        # Create the complete chain (same as getChatChain)
+        # 1. Measure retrieval cost (same as getChatChain)
+        def measure_retrieval_cost(input_dict):
+            start_time = time.time()
+            start_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
+            
+            docs = retriever.invoke(input_dict["question"])
+            end_time = time.time()
+            end_memory = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024  # MB
+            retrieval_time = (end_time - start_time) * 1000  # to ms
+            retrieval_mem = (end_memory - start_memory)
+            if debug:
+                print(f"## DEBUG: Query time: {retrieval_time:.2f} ms (returned {len(docs)} documents)")
+                print(f"## DEBUG: Query mem cost: {retrieval_mem:.2f} MB")
+            
+            # Store performance metrics in the metrics dictionary
+            metrics['retrieval_time'] = retrieval_time
+            metrics['retrieval_mem'] = retrieval_mem
+            return docs
+        
+        # 2. Build question_str function (same as getChatChain)
+        def question_str(question_dict):
+            """transform the doc from document to str"""
+            context = _combine_documents(question_dict["docs"])
+            standalone_question = question_dict["question"]
+            final_question = {
+                "context": context,
+                "question": standalone_question
+            }
+            return final_question
+        
+        # 3. Build retrieved_documents (same as getChatChain)
+        retrieved_documents = RunnablePassthrough.assign(
+            docs=lambda x: measure_retrieval_cost(x),
+            question=lambda x: x["question"]
+        )
+        
+        # 4. Build answer (same as getChatChain)
+        answer = {
+            "answer": question_str | FINAL_QUESTION | (lambda x: measure_llm_time(llm, x, local_model, debug, metrics)),
+            "docs": itemgetter("docs")
+        }
+        
+        # 5. Create the final chain (same as getChatChain)
+        final_chain = retrieved_documents | answer
+        
+        # 6. Invoke the complete chain (same as getChatChain)
+        inputs = {"question": question}
+        result = final_chain.invoke(inputs)
+        
+        # 7. Extract results
+        response = result["answer"]
+        docs = result["docs"]
+        answer_content = response.content if hasattr(response, "content") else str(response)
+        
+        # Extract performance metrics from the metrics dictionary
+        retrieval_time = metrics.get('retrieval_time', 0)
+        retrieval_mem = metrics.get('retrieval_mem', 0)
+        llm_time = metrics.get('llm_time', 0)
+        
+        # Build context for return
+        context_str = _combine_documents(docs)
+        context_list = [format_document(doc, DOCUMENT_TO_STR) for doc in docs]
+        retrieval_time_str = f"{retrieval_time:.2f} ms"
+        retrieval_mem_str = f"{retrieval_mem:.2f} MB"
+        llm_time_str = f"{llm_time:.2f} ms"
+        return {
+            "answer": answer_content,
+            "context_str": context_str,
+            "context_list": context_list,
+            "docs_count": len(docs),
+            "retrieval_time": retrieval_time_str,
+            "retrieval_mem": retrieval_mem_str,
+            "llm_time": llm_time_str
+        }
+        
+    except Exception as e:
+        print(f"Error processing question: {e}")
+        return None
 # def clear_conversation_history():
 #     global _memory_instance
 #     if _memory_instance is not None:
