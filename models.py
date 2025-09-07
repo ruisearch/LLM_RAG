@@ -132,7 +132,8 @@ def create_llm(model_name: str, is_local: bool = True):
                 model=model_name,
                 api_key=SecretStr(api_key_str) if api_key_str else None,
                 base_url=api_config['base_url'],
-                temperature=0.1 # set 0.1 for reproducibility
+                temperature=0.1, # set 0.1 for reproducibility
+                streaming=True # enable for qwen3-30b-a3b
             )
         except ImportError:
             raise Exception("Please install langchain-openai: pip install langchain-openai")

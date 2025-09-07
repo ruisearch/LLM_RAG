@@ -125,7 +125,11 @@ try:
         # api_key=os.getenv("DASHSCOPE_API_KEY"),
         api_key=SecretStr(api_key) if api_key else None,
         base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-        model="qwen3-30b-a3b-instruct-2507"
+        # model="qwen3-30b-a3b-instruct-2507",
+        model="qwen3-30b-a3b",
+        streaming=True # qwen3-30b-a3b needs to enable streaming because it defaluts to thinking,
+        # and the thinking mode needs to set streaming to be Ture
+        # reference https://help.aliyun.com/zh/model-studio/stream?spm=a2c4g.11186623.0.0.bdd44823WNqlVz#611266746crzq
     )
 
     
