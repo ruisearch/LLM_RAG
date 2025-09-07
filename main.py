@@ -104,7 +104,7 @@ def main(llm_model_name:str, embedding_model_name:str, document_path:str, \
                 break
 
 def parse_parameters() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run local LLM and RAG with Ollama")
+    parser = argparse.ArgumentParser(description="A Local RAG system.")
     parser.add_argument(
         "-m",
         "--model",
