@@ -53,6 +53,3 @@ options:
 
 the command is `uv run main.py [arg....]`
 
-# An example for Benchmark
-
-TODO....
