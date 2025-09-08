@@ -1,0 +1,602 @@
+{
+  "5ec42459-5685-4f8b-ab52-d63da65470e1": {
+    "response": "Production tax credits (PTCs) provide significant financial support for new zero-carbon energy projects by offering $27.50 per MWh for the first 10 years of operation, with an additional 10% bonus for projects in energy communities (if wage/apprenticeship requirements are met). Eligible facilities must commence construction by 2036. The PTC reduces the effective variable cost of zero-carbon projects, improving their economic competitiveness. However, since the credit only applies for the first decade of operation, modeling it presents challenges - some capacity expansion models provide the full credit for 10 years then none, while others convert it to an investment tax credit (ITC) when they can't properly account for the time-limited nature of the PTC. The credit's temporary nature requires careful financial modeling, with some analyses calculating its present value (less a 7.5% transfer penalty) and amortizing it appropriately.",
+    "retrieval_time": "4320.25 ms",
+    "retrieval_mem": "333.81 MB",
+    "llm_time": "25636.06 ms"
+  },
+  "0fdee04e-156e-4ec8-9a21-6df7587be10f": {
+    "response": "Participants prefer validation tasks because they provide more consistent but relatively lower rewards with less variance in earnings, whereas training tasks offer higher potential rewards but come with greater uncertainty. The research shows that while training nodes generally receive higher rewards per participant due to their smaller numbers, the variability in rewards among training nodes is much higher. This steadier return with predictable earnings makes validation tasks more appealing to participants despite the lower potential maximum rewards.",
+    "retrieval_time": "258.10 ms",
+    "retrieval_mem": "0.07 MB",
+    "llm_time": "15174.52 ms"
+  },
+  "de8b4618-c242-405f-9332-f02a1d00e4fb": {
+    "response": "Yes, the symplectic potential (denoted as θ) has significant importance in general relativity's Lagrangian formulation. According to the research documents, the symplectic potential is a three-form that appears in the variation of the Lagrangian four-form (δL = EAδΦA + dθ{δΦ}). It's specifically described as \"the integrand of the usual boundary term which arises when varying an action\" and is \"often called the symplectic potential [69]\". \n\nThis potential is crucial because it's used to define the symplectic current ω, which is conserved when the linearized equations of motion hold - a key property for establishing flux-balance laws. The document notes this approach has particular advantages for general relativity, as it avoids needing compensating boundary terms that would otherwise be required since GR's Lagrangian depends on second derivatives of the field.",
+    "retrieval_time": "116.34 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "19035.18 ms"
+  },
+  "d3ed1d7f-2d8a-4021-acf0-ad6d901e38e5": {
+    "response": "0.1",
+    "retrieval_time": "138.89 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "10562.27 ms"
+  },
+  "0b167c9b-a10f-4ccc-a42c-fe313bf235b6": {
+    "response": "The research shows that using noise in neuromorphic hardware for learning offers several key benefits: it enables energy-efficient learning that approaches backpropagation performance while consuming minimal energy, embraces rather than mitigates inherent device noise, allows for local operations that reduce circuitry requirements, provides significant energy savings, works robustly with various noise distributions (normal and Bernoulli), and is generalizable across different physical systems. The approach leverages natural physical noise sources like stochastic magnetic tunnel junctions (sMTJs) which offer inherent randomness, CMOS compatibility, robustness, and tunable noise characteristics through applied fields or currents.",
+    "retrieval_time": "139.96 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "14168.14 ms"
+  },
+  "2673645e-f1d9-418f-8888-310bf80b1604": {
+    "response": "Yes. According to the research document, \"for any s, the best linear unbiased (or kriging) predictor of Y(s) is identical to the value of optimal smoothing function fx(s) in an RKHS (Kent and Mardia, 1994), and both can be expressed in the form fx(s) = (u(s)′Gθ + k(s)′Mθ)y.\" This establishes that the best linear unbiased predictor of a stochastic process can indeed be expressed as an optimal smoothing function in a reproducing kernel Hilbert space (RKHS).",
+    "retrieval_time": "148.90 ms",
+    "retrieval_mem": "0.05 MB",
+    "llm_time": "13431.87 ms"
+  },
+  "6f1e268c-3189-47a9-9500-fd6b10d27c62": {
+    "response": "The XAI-CHEST framework offers several key benefits over traditional deep learning-based channel estimation methods:\n\n1. Interpretability - It resolves the \"black box\" problem by providing explanations for model behavior, making AI decisions transparent and trustworthy\n\n2. Performance improvement - It delivers improved bit error rate performance compared to classical DL-based channel estimation\n\n3. Computational efficiency - It achieves 3× times less computational complexity by selecting only relevant inputs and optimizing the FNN architecture\n\n4. Smart feature selection - It classifies model inputs into relevant and irrelevant sets using a perturbation-based methodology, creating a more optimized channel estimation scheme\n\n5. Architecture optimization - It optimizes the neural network structure (using shallower FNN with fewer neurons) while maintaining accuracy\n\nThese benefits collectively enable a more trustworthy, efficient, and high-performing channel estimation solution for wireless communications.",
+    "retrieval_time": "113.70 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "15381.91 ms"
+  },
+  "1342fea1-56ed-409e-8ebf-236d797eb728": {
+    "response": "Yes, according to the research document, the DATETIME entity type explicitly includes words describing a time frame. The document states: \"Include words describing a time frame. For example: 'bây giờ' (now), 'về lâu về dài' (in the long run).\" It also mentions including words describing approximate time, repetitions, and clusters of words that describe time and its complements.",
+    "retrieval_time": "99.69 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "8911.70 ms"
+  },
+  "83dda238-c421-4f22-aec5-7c6c83875eb3": {
+    "response": "I cannot answer this question based on the provided research documents. The term \"lidentity\" does not appear in any of the provided sources, and there is no clear explanation of what it means for an element to be \"in the lidentity of itself.\" While some documents discuss related concepts like \"identifiability\" and \"elimination of imaginaries\" in mathematical logic, none address this specific terminology or concept.",
+    "retrieval_time": "114.06 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "16825.19 ms"
+  },
+  "3e072125-e130-438c-b264-0bfb622cdf65": {
+    "response": "Foreground and background predictions are decoupled in binary classifiers by filtering out background proposals using the model's predictions. Specifically, they use the formula Fb(zi) = η(C(zi) − logβ(Φ(y)λ/PC i Φ(i)λ) + logβ(1/C)) · η(zi), where η(zi) is the sigmoid activation function that acts as a filter for low-scoring proposals. This approach performs class calibration and space calibration in logit space, which helps lower the false-positive detection rate. This is necessary because in binary classifiers for object detection, the logit zi simultaneously discriminates among foreground classes and performs background-to-foreground classification.",
+    "retrieval_time": "120.30 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "14981.99 ms"
+  },
+  "ff538548-bd95-4c2e-ba70-5dc9aa7d34ef": {
+    "response": "Players in non-LQ games have non-quadratic cost functions and follow non-linear dynamical systems, unlike LQ games where players optimize quadratic cost functions and follow linear dynamical systems as defined in the document. The research shows that non-LQ games require more complex approaches like iterative LQ approximations to handle their non-linearity, as mentioned in the multi-agent navigation game example which is specifically identified as a non-LQ game.",
+    "retrieval_time": "143.74 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "20580.12 ms"
+  },
+  "ccc11659-f558-4052-a58d-9211978badbd": {
+    "response": "Yes, according to the research document, they train an accent classifier to determine whether input audio is native or non-native. The document states: \"Additionally, we train an accent classifier to determine whether an input audio is native or non-native. The classifier architecture and training setting is similar to [9].\" They use this classifier to compute accuracy scores for both original non-native audio and converted native audio sets.",
+    "retrieval_time": "136.94 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "7135.47 ms"
+  },
+  "712ded28-d7cc-46b6-85c2-98ca3e886aef": {
+    "response": "The Navier-Stokes equations describe the motion of fluid substances by modeling the conservation of mass, momentum, and energy. They are continuity equations for conserved densities (particle density, momentum density, and energy density) and their associated currents. In hydrodynamic terms, they track how fundamental properties like density (ϱ), velocity (u), and temperature (T) evolve over time and space. These equations provide a universal framework for fluid dynamics where specific fluid characteristics are captured through transport coefficients (like viscosity and thermal conductivity). Originally developed for three-dimensional classical fluids, they've been successfully applied to diverse systems including quantum fluids, biological systems, and relativistic matter.",
+    "retrieval_time": "107.79 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "18060.21 ms"
+  },
+  "58266700-b97a-49f0-a8fb-96ded6e11a19": {
+    "response": "The government announced each year's admission policy in April, three months before the July exam, as a public notice in the Government Gazette.",
+    "retrieval_time": "120.17 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "5796.32 ms"
+  },
+  "6bcbff0a-27a8-449a-a3f7-426857ad0f40": {
+    "response": "The approach integrates graph neural networks, structural interactomics, and topological network features to provide proteome-wide predictions about genetic disease mechanisms.",
+    "retrieval_time": "115.04 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "9788.02 ms"
+  },
+  "2365e317-1ea7-4d6d-b630-64dd2ecdba3a": {
+    "response": "The provided research documents mention scaling laws that show a strong relationship between training compute and model perplexity (a measure of loss) across seven orders of magnitude, but they don't specifically describe the typical trends or shapes of training and evaluation loss curves during model training. While one document notes that omitting z-loss can cause \"diverging loss curves\" and that proper stabilization techniques are needed for training stability, the documents don't collectively provide information about standard patterns in how loss values change during training (such as exponential decay, power law behavior, or other characteristic trends). The documents reference loss metrics and scaling relationships but don't detail the typical progression of loss curves throughout the training process.",
+    "retrieval_time": "153.19 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "19564.92 ms"
+  },
+  "5a7c808e-37ea-4d03-9c94-efc71c950d7e": {
+    "response": "Yes, analyzing GTA (Gene-Trait Association) problems requires biomedical knowledge. The research documents explicitly state that this type of analysis demands \"relevant biological and statistical knowledge, but also the flexible planning, troubleshooting, and domain knowledge inference abilities typically performed by human bioinformaticians.\" The documents also highlight \"a performance gap between AI approaches and human experts, particularly in tasks requiring domain knowledge and clinical data interpretation.\" The benchmark was developed with input from computational biologists and bioinformaticians who applied their domain expertise to curate traits across medical categories and establish analysis guidelines, confirming that biomedical knowledge is essential for proper GTA problem analysis.",
+    "retrieval_time": "98.71 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "15433.71 ms"
+  },
+  "d9c7b174-5eda-45c6-83b4-8b38494c4da3": {
+    "response": "Yes, according to the annotation guidelines in the research document, medical named entities should be retained in summaries. The guidelines specifically state: \"Retain as many medical named entities as possible as long as the limit is not exceeded.\" This is part of the instructions given to annotators creating medical conversation summaries in the VietMed-Sum dataset.",
+    "retrieval_time": "113.14 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "8209.87 ms"
+  },
+  "7243da07-8903-4879-a90c-e4167d757bfd": {
+    "response": "The usual stochastic order on the set of random variables $\\mathcal{M}$ is defined as:  \n$\\xi \\preceq_{\\text{st}} \\eta$ if and only if $q_\\xi(u) \\leq q_\\eta(u)$ for all $u \\in (0, 1)$,  \nwhere $q_\\xi$ and $q_\\eta$ are the quantile functions of $\\xi$ and $\\eta$, respectively, defined as $q_\\xi(u) := \\inf\\{v \\in \\mathbb{R} : u \\leq P(\\xi \\leq v)\\}$.  \n\nThis is equivalent to the condition that the distribution function of $\\xi$ is less than or equal to that of $\\eta$ for all real numbers, i.e., $F_\\xi(t) \\leq F_\\eta(t)$ for all $t \\in \\mathbb{R}$.",
+    "retrieval_time": "138.62 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "24322.30 ms"
+  },
+  "988c0675-9d8f-4445-951e-0e7fa7bfa510": {
+    "response": "The provided research documents do not contain specific information about whether the Borda Count method involves tie-breaking rules. While the documents discuss Borda Count's manipulability and comparison with other voting methods, they don't address its tie-breaking procedures.",
+    "retrieval_time": "135.99 ms",
+    "retrieval_mem": "0.12 MB",
+    "llm_time": "10915.58 ms"
+  },
+  "d2c62d73-1d41-43fd-be72-290c7bc1e1eb": {
+    "response": "VO-based NURBS discretization enhances accuracy in contact analysis by using higher-order basis functions specifically at the contact surface while maintaining lower order in the bulk regions. This approach provides several key improvements:\n\n1. It significantly reduces oscillation amplitude in contact forces (approximately 80% for normal forces and 93% for frictional forces compared to standard N2 discretization)\n\n2. It increases the number of degrees of freedom (DOFs) available at the contact surface, allowing better conformity to finite deformations\n\n3. It produces contact pressure distributions that more closely match reference solutions\n\n4. It achieves superior accuracy even at coarse meshes compared to standard NURBS discretization\n\n5. It improves computational efficiency by avoiding unnecessary higher-order discretization in regions away from the contact surface, using fewer total DOFs to achieve similar or better accuracy than standard approaches",
+    "retrieval_time": "138.56 ms",
+    "retrieval_mem": "0.12 MB",
+    "llm_time": "20795.83 ms"
+  },
+  "f1d543c9-7749-4b1b-9547-ae3994e52f19": {
+    "response": "Yes, Kohn's theorem can be bypassed to couple LLL to a constant electric field by introducing an external potential for the electrons. As stated in the research document: \"Another way to avoid Kohn's restriction and actually couple the LLL to a constant electric field is via the presence of an external potential for the electrons.\" In clean systems without external potentials, Kohn's theorem prevents constant electric fields from coupling to the LLL, as uniform fields can only couple to the cyclotron mode and cause transitions between Landau levels rather than within the LLL.",
+    "retrieval_time": "155.10 ms",
+    "retrieval_mem": "0.11 MB",
+    "llm_time": "13013.94 ms"
+  },
+  "4dac7203-72f4-4764-a45a-3233c3796a0c": {
+    "response": "No, the total size of state-preserving and state-resetting populations does not differ when measured. According to the research document, \"were we to measure the total size of each population, the two would be indistinguishable.\" This is because when summing the evolution equations over all states, both population types follow identical equations for their total size (µP₀ and µR₀), as shown in equations (54a) and (54b) where ρ = r. The difference between these population types only becomes apparent when examining higher moments (like the first moments µP₁ and µR₁), not in the total population size measurements.",
+    "retrieval_time": "122.26 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "14703.56 ms"
+  },
+  "90b12bfc-aef5-4724-b03b-45d57b94a31c": {
+    "response": "The signed error non-conformity score in conformal regression is defined as Vi = Yi - ĝ(Xi), where Yi is the actual response value and ĝ(Xi) is the predicted value. This is explicitly stated on page 13 of the document. \n\nNote that an equivalent alternative formulation exists (mentioned on page 5) where Vi = ĝ(Xi) - Yi, but both approaches provide identical coverage guarantees - they just differ in how the prediction intervals are constructed (one requires adding quantiles while the other requires subtracting them).",
+    "retrieval_time": "115.43 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "18680.75 ms"
+  },
+  "854d62b4-1494-4363-9af1-04427de857d3": {
+    "response": "Unawareness structures contribute to modeling decision-making scenarios by providing a formal framework that captures both \"unawareness proper\" (not knowing specific events) and \"awareness of unawareness\" (recognizing there might be things you cannot conceive of). They model decision-making through:\n\n1. A lattice of knowledge spaces ordered by richness, with projections between richer and poorer spaces\n2. Allowing decision makers to assign subjective probabilities to novel events they haven't yet conceived\n3. Supporting the modeling of learning processes where newly discovered events transition from ambiguous to less ambiguous\n4. Enabling representation of how decision makers inductively infer from past discoveries that unknown events might still exist\n5. Incorporating \"degree of unawareness\" as a decision weight in preferences\n6. Connecting choice-theoretic approaches with epistemic models of knowledge\n\nThese structures help model dynamic decision processes where agents gradually discover new possibilities while maintaining awareness that their current knowledge might be incomplete.",
+    "retrieval_time": "122.55 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "28136.97 ms"
+  },
+  "147a6edb-6bda-43ba-ae37-bdd941b738ef": {
+    "response": "Based on the research documents, infant cry events typically last within the first two seconds, with many very brief cries (often under 1 second) as shown by a notable peak at the beginning of the duration distribution. In contrast, snoring events tend to have slightly longer durations, with the most common durations ranging from one to four seconds. The research indicates that infant cries are more transient in nature, while snoring includes somewhat longer sound patterns that require different feature analysis approaches.",
+    "retrieval_time": "109.88 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "9422.38 ms"
+  },
+  "e34c08b7-40b7-4814-b6d7-cad4c5b0cca6": {
+    "response": "The p-value indicates that the simulated behavioral expectation model shows non-normality (p-value = 0.03 < 0.05), while the rational expectation model shows normality (p-value = 0.08 > 0.05). This comes from the Jarque-Bera normality test results, where a p-value below 0.05 suggests rejection of the normality hypothesis.",
+    "retrieval_time": "156.53 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "11359.56 ms"
+  },
+  "de305969-a067-490c-b13d-ec2d8b22e804": {
+    "response": "The student-optimal stable mechanism (DA) addresses strategy-proofness and stability by being the only mechanism that simultaneously satisfies both properties in school choice contexts. According to the research, when students have strict preferences for schools, DA ensures:\n\n1. Strategy-proofness: Students cannot benefit by misrepresenting their true preferences - they have no incentive to strategize and are better off reporting their genuine preferences.\n\n2. Stability: School seats are not wasted, and no student would prefer the seat of someone with lower priority (as stated in the document, \"stability ensures that school seats are not wasted and that no one would prefer the seat of someone with...\").\n\nThe research proves (Theorem 3) that DA maintains these properties on the preference domain Dc, where students' preferences depend on both schools and colleagues. Additionally, Corollary 3 confirms that DA is the only mechanism that is both stable and strategy-proof on this domain. While DA has limitations (students can affect others' assignments without changing their own school), the research shows this drawback is constrained - students cannot change their schoolmates while remaining in the same school, a property called \"local non-bossiness.\"",
+    "retrieval_time": "165.60 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "23748.04 ms"
+  },
+  "9fcf139b-f199-4625-bace-23acbfbce407": {
+    "response": "Yes, conformal prediction guarantees unconditional coverage. According to the research document, \"Conformal prediction is a general method of creating prediction intervals that provide a non-asymptotic, distribution free coverage guarantee\" where \"pr{Yn+1 ∈C(Xn+1)}≥ 1 −α\" and \"This coverage is guaranteed unconditionally [Vovk et al., 2005, Lei and Wasserman, 2012].\" The document explicitly contrasts this with conditional coverage, noting that while unconditional coverage is guaranteed, achieving finite sample conditional coverage for continuous responses would result in infinite prediction set lengths.",
+    "retrieval_time": "143.55 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "22790.11 ms"
+  },
+  "4ec946cf-29bc-47da-bd1a-c55bb8cc9cc3": {
+    "response": "The provided research documents do not contain information about how gravitational clustering affects cosmic ray production in galaxies. While one document mentions that \"gravitational clustering can enhance the neutrino density\" of the Cosmic Neutrino Background (CνB) in galaxies and clusters, this refers to how clustering affects neutrino density, not cosmic ray production. The documents discuss cosmic rays interacting with the CνB and the GZK effect, but do not address how gravitational clustering influences the actual production mechanisms of cosmic rays in galaxies.",
+    "retrieval_time": "101.98 ms",
+    "retrieval_mem": "0.11 MB",
+    "llm_time": "17289.14 ms"
+  },
+  "2b6672de-c8dd-4f29-bcbe-67bdd24c2a85": {
+    "response": "Yes, a lower TRE (Target Registration Error) value indicates better alignment between images. The research document shows that reducing TRE from 2.361 to 1.943 improved registration accuracy, with the text explicitly stating this \"enhances registration accuracy by integrating the strengths of both metrics.\" The document also notes that \"low TRE values\" correspond to \"best performance,\" confirming that lower TRE values represent better image alignment in registration tasks.",
+    "retrieval_time": "105.37 ms",
+    "retrieval_mem": "0.13 MB",
+    "llm_time": "13915.63 ms"
+  },
+  "fb3dddca-07d8-4d90-8439-6fa4d12b1e69": {
+    "response": "Yes, according to the research document, the chemical reaction network can be very sensitive in X₄ whenever r is close to 0. This occurs specifically when x₄ ≫ x₁ ≈ x₂ ≈ x₃ ≈ x₅, as stated in the text: \"However, the CRN can also be very sensitive in X₄ whenever r is close to 0. This happens, for example, when x₄ ≫ x₁ ≈ x₂ ≈ x₃ ≈ x₅.\"",
+    "retrieval_time": "112.57 ms",
+    "retrieval_mem": "0.16 MB",
+    "llm_time": "16329.87 ms"
+  },
+  "2ef1ea20-e926-4f88-bd03-01ecb3677764": {
+    "response": "Incentive compatibility is crucial for determining whether a social choice function (SCF) can be implemented. The research shows two key relationships with agent information:\n\n1. Generally, providing agents with additional (partial) information about others' preferences makes incentive compatibility harder to satisfy. As stated on page 1: \"a planner concerned only with partial implementation will never prefer an agent to have additional information about other agents\" because the planner must ensure truthful reporting holds across all possible signal realizations.\n\n2. However, the research reveals a novel exception: when agents receive PERFECT information about others' types (complete information), an initially non-incentive-compatible SCF can become implementable. As shown in the example on pages 7-8, \"agents receiving information about the preferences of others can allow an initially non-implementable SCF to become implementable, a possibility that has not yet been noted in the literature.\"\n\nThis happens because perfect information allows agents to \"completely rule out certain states of the world,\" changing how incentive compatibility constraints operate. The paper identifies this counterintuitive finding as a new contribution to the field.",
+    "retrieval_time": "127.25 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "34875.72 ms"
+  },
+  "2ea8cbf8-285f-4373-9503-64ab96af522e": {
+    "response": "The generating function F(t) for motives of central slope Kronecker moduli (slope 1) is determined by a v-difference equation: ΔF(t) = ∇^(m-1)(t∏(from i=1 to m-1) F(v^(m-2i)t)) with initial condition F(0) = 1. This equation, stated in Corollary 6.2, shows that F(t) is mutually determined with G(t) (which encodes motives of Kronecker moduli of slopes 1-1/d) through the relations F(t) = ∇^(m-1)G(t) and ΔG(t) = t∏(from i=1 to m-1) F(v^(m-2i)t). The coefficients of F(t) can be computed recursively using the formula in Corollary 6.3, which expresses each virtual motive m_d in terms of previous values with appropriate v-powers.",
+    "retrieval_time": "117.71 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "28436.31 ms"
+  },
+  "4d1672dc-e258-489c-a79e-522a6cd7fd0b": {
+    "response": "Euler's product plays a crucial role in analyzing the phase variation of the ξ(s) function. According to the research documents, the Euler product representation of the Riemann zeta function (ζ(s) = ∏ₚ 1/(1-1/pˢ) for ℜ(s) > 1) is specifically used to compute ∂ℑ{ln[ζ(s)(s-1)]}/∂t. \n\nThe paper demonstrates that this Euler product-based representation allows for calculating the derivative of the imaginary part of ln[ζ(s)(s-1)] with respect to t, which is essential for understanding the behavior of ξ(s). Lemma 2 in the document directly connects ∂∠[ξ(t,ϵ)]/∂t with the Euler product.\n\nThis approach is proven valid at least for ϵ > 1/2 (with conjectures about a wider validity range), and ultimately helps establish that for all t where ξ(t) ≠ 0, the inequality (dξ(t)/dt)² - ξ(t) × d²ξ(t)/dt² > 0 holds true. The Euler product thus provides a critical analytical tool for studying the properties of the ξ function through its phase variation.",
+    "retrieval_time": "144.69 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "32725.70 ms"
+  },
+  "053f9767-c2e8-433e-be80-ade7ccc93cfe": {
+    "response": "LLMs struggle with complex, long-term planning and detailed spatial reasoning tasks like grid-based path planning. They often generate invalid, ungrounded, or incomplete paths due to limitations in spatial and temporal reasoning, resulting in inefficient or collision-prone routes despite their ability to provide valuable global environmental insights.",
+    "retrieval_time": "119.49 ms",
+    "retrieval_mem": "0.05 MB",
+    "llm_time": "11369.94 ms"
+  },
+  "1471efc3-d1bd-47b0-8136-656fb376f6ff": {
+    "response": "The space-time correlation function is expressed mathematically as:\n\nC(|r − r′|, |t − t′|) = ⟨ψ(r, t)ψ(r′, t′)⟩ = ∬ e^(-ik·r - ik'·r') ⟨ψ_k(t)ψ_k'(t')⟩ dk/(2π)^2 dk'/(2π)^2\n\nThis equation (labeled as equation 15 in the document) defines the correlation function as the expectation value of the product of the field ψ at two different space-time points, represented in Fourier space.",
+    "retrieval_time": "143.35 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "19897.89 ms"
+  },
+  "e65e613f-8018-4e96-857f-d1c5d8ce61ea": {
+    "response": "CodeMMLU addresses limitations of traditional algorithm-focused benchmarks by shifting from code generation evaluation to assessing deeper code understanding and reasoning through a multiple-choice question (MCQ) format. Unlike traditional benchmarks that primarily measure code generation ability (like HumanEval or MBPP), CodeMMLU evaluates comprehension across diverse domains including code analysis, defect detection, and software engineering principles. The MCQ format provides reliable precision-based metrics instead of using less rigorous LLM-as-judge approaches that are vulnerable to adversarial attacks. With nearly 20,000 questions spanning 10 programming languages and incorporating answer choice permutations, it emphasizes true understanding rather than memorization, while providing comprehensive coverage across tasks like code repair, execution prediction, and fill-in-the-blank that go beyond conventional code completion tasks.",
+    "retrieval_time": "135.17 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "27781.95 ms"
+  },
+  "0df49653-f6e0-4426-ad85-20d615dd22ed": {
+    "response": "Understanding hyperparameters critically impacts differential privacy outcomes in DP-SGD models because:\n\n1. Different hyperparameter choices can lead to dramatically different privacy guarantees - for example, the same parameters might yield ε ≈ 1 with Poisson subsampling but ε > 10 with sampling without replacement, even for realistic DP-SGD configurations.\n\n2. Privacy accounting techniques vary in tightness, and using inconsistent methods when comparing models can create misleading advantages - conclusions about DP-SGD behavior under various hyperparameters might be artifacts of inaccurate accounting rather than actual performance differences.\n\n3. Proper disclosure of privacy accounting hyperparameters is essential for fair comparisons between different DP-SGD implementations, as recomputing privacy parameters with consistent, tight accounting methods is necessary for valid evaluations.\n\nWithout careful hyperparameter understanding and consistent accounting, privacy guarantees may be significantly overestimated or underestimated.",
+    "retrieval_time": "124.57 ms",
+    "retrieval_mem": "0.08 MB",
+    "llm_time": "18750.31 ms"
+  },
+  "579b2adf-0c14-473a-bf00-af3fc749122b": {
+    "response": "The research documents mention that \"the average number of years the parents have been educated\" was used as a control variable in the regression models analyzing GPA. However, the excerpts do not provide any information about the statistical significance of parental education across the different models. The documents focus primarily on peer effects and do not report regression results for the parental education variable. Therefore, based on the provided information, I cannot determine whether parental education had a statistically significant impact on GPA across all models.",
+    "retrieval_time": "126.20 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "14216.65 ms"
+  },
+  "a5974817-d29e-47f4-b68a-721858c1f34f": {
+    "response": "In the birth-death Metropolis-Hastings algorithm, a new point is added through the following process:\n\n1. A birth proposal is made with probability p\n2. If a birth is proposed, a candidate point ξ is generated from the probability density function qb(x, ξ) = ϕ(ξ)/c*, where c* = ∫S ϕ(ξ) dξ (the integral of ϕ over the space S)\n3. The acceptance ratio for the birth is calculated as rb(x, ξ) = λf(x, ξ)qd(x ∪ ξ)(1 − p)/qb(x, ξ)p\n4. The new point is added (Xn+1 = Xn ∪ ξ) with probability min{1, rb(x, ξ)}\n5. If not accepted, the point process remains unchanged (Xn+1 = Xn) with probability 1 − min{1, rb(x, ξ)}",
+    "retrieval_time": "131.40 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "20396.74 ms"
+  },
+  "f0a010f4-cf58-454d-a093-222f013c9a61": {
+    "response": "The research documents identify three methods used to estimate the intensity of a Strauss point process:\n\n1. MH estimator (Metropolis-Hastings estimator)\n2. CFTP estimator (Coupling From The Past estimator)\n3. AIS estimator (Adaptive Importance Sampling estimator)\n\nThese methods are compared in the paper for their efficiency in estimating the intensity parameter λ of a stationary Strauss point process, with the AIS estimator shown to be more efficient than the other two in terms of time-variance performance.",
+    "retrieval_time": "125.60 ms",
+    "retrieval_mem": "0.14 MB",
+    "llm_time": "12043.34 ms"
+  },
+  "95d0da61-e8c6-469d-8840-e996bcc19c6b": {
+    "response": "The type of spin channel behavior (p-type, n-type, metallic, or semiconducting for each spin direction) fundamentally determines the electrical characteristics of SGMs. Specifically:\n\n1. It controls whether both spin channels conduct current or only one does, affecting overall device performance\n2. It enables unique phenomena like hot electron filtering that can achieve sub-60 mV/dec sub-threshold swing values\n3. Different combinations create distinct device behaviors:\n   - Materials with p-type/n-type behavior in both channels show conventional FET characteristics\n   - Mixed behavior (one channel semiconducting/metallic, the other p/n-type) creates asymmetric transport\n   - The rare p-n type SGM (p-type in spin-up, n-type in spin-down) acts like a type-II semiconductor with overlapping bands, producing gate-tunable negative differential resistance effects\n\nThese spin-dependent characteristics allow for novel spintronic transistor designs that go beyond conventional semiconductor technology, with the specific spin channel behavior directly determining the current-voltage characteristics and potential applications.",
+    "retrieval_time": "133.35 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "23500.77 ms"
+  },
+  "015f84f5-d694-4fad-bfa5-d2f3687bcd52": {
+    "response": "No, NVILA does not compromise accuracy for efficiency gains. According to the research documents, NVILA \"achieves competitive performance on image and video benchmarks while maintaining efficiency through 'scale-then-compress'\" and \"matches or surpasses the accuracy of many leading open and proprietary VLMs across a wide range of image and video benchmarks.\" The documents specifically state that it reduces training costs by 1.9-5.1×, prefilling latency by 1.6-2.2×, and decoding latency by 1.2-2.8× while maintaining or improving accuracy. Even when using efficiency techniques like FP8 training, the accuracy metrics (MMMU and Video-MME scores) remain nearly identical to baseline models.",
+    "retrieval_time": "133.80 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "14768.81 ms"
+  },
+  "c35f4948-506a-46c4-9259-114920f407ee": {
+    "response": "The random slopes MLMM captures uncertainty related to the generalizability of results to other similar but untested simulation conditions. Specifically, it measures the uncertainty that arises from variation across different simulation conditions, providing a level of uncertainty consistent with the goal of demonstrating conclusions that \"we cannot prove analytically but expect or intend to hold in settings similar to the conditions tested.\" This is evidenced by the fact that when researchers \"block bootstrap the 243 simulation conditions, we get SEs that match those of the random slopes MLMM.\" It allows for calculating a 95% empirical Bayes range to estimate generalizability beyond just the average effect across tested conditions.",
+    "retrieval_time": "135.36 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "11555.22 ms"
+  },
+  "cce291fe-927b-499f-8b71-f677ec78ac98": {
+    "response": "I cannot answer this question based on the provided research documents. The documents discuss various wireless technologies like Reconfigurable Intelligent Surfaces (RIS), IoT applications, and testing in emulated environments like Colosseum, but they don't specifically address the purpose of using pre-commercial devices in wireless research.",
+    "retrieval_time": "115.75 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "17822.33 ms"
+  },
+  "98a3354c-c20b-4e2f-aa94-2b37d8bf7323": {
+    "response": "A production network can become singular due to substitution elasticity because the CES production function allows unlimited factor substitution. When substitution elasticity (σ) is less than 1 (inelastic network), it creates \"negative singularity\" where immense labor is needed to offset other factors (m₀ → ∞). When σ > 1 (elastic network), it creates \"positive singularity\" where minimal labor is needed (m₀ → 0). These singularities occur because nonneutral substitution elasticity makes production networks fragile against sectoral productivity shocks, transforming the input-output structure nonlinearly. Negative singularity can happen with productivity-diminishing innovations (like environmental technologies), where some commodities cannot be produced net.",
+    "retrieval_time": "140.11 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "19325.95 ms"
+  },
+  "8c270ba7-7698-4fe5-82dc-4790162878e0": {
+    "response": "The research documents mention SmoothInfo as a \"smooth variant\" of the information dimension for calculating fractal dimension, but don't provide specific details about how it improves upon traditional techniques. The documents indicate that the information dimension variant has an issue where \"the quantity 1(ny(u)) can be frequently zero for many locations u especially for rare classes that have few samples and are sparsely located.\" While SmoothInfo appears to address this problem (likely through some smoothing technique to handle zero values), the documents don't explicitly explain the specific mechanism or improvements of SmoothInfo over traditional methods. The authors note that all variants (Info, SmoothInfo, and Box) are robust, but they chose the Box variant for their main paper instead of SmoothInfo.",
+    "retrieval_time": "161.72 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "17079.57 ms"
+  },
+  "c83b2de2-c2b8-4d33-aaab-a843bd1aa46b": {
+    "response": "The basis vectors for a local reference frame of a nucleotide are:\n\n1. a1: a vector directed from the backbone site to the base site\n2. a2: a vector normal to the plane of the base\n3. a3: defined as a1 × a2 (the cross product of a1 and a2)\n\nThese vectors are computed from the quaternion orientation (q = [q0, q1, q2, q3]) of the nucleotide using the formulas:\n- a1 = [q0² + q1² - q2² - q3², 2(q1q2 + q0q3), 2(q1q3 - q0q2)]\n- a2 = [2(q1q2 - q0q3), q0² - q1² + q2² - q3², 2(q2q3 + q0q1)]\n- a3 = [2(q1q3 + q0q2), 2(q2q3 - q0q1), q0² - q1² - q2² + q3²]",
+    "retrieval_time": "142.32 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "15209.04 ms"
+  },
+  "66b6344f-a509-48fe-a4ef-eb3ad84f9c3c": {
+    "response": "The provided research documents do not contain specific information comparing OTFS and AFDM performance for velocity estimation at high SNR levels. While the documents discuss BER and NMSE performance comparisons between these modulation schemes in doubly-dispersive channels (showing AFDM has a slight advantage over OTFS in general channel estimation), they don't address velocity estimation performance specifically at high SNR levels. The documents mention Doppler shift in relation to channel characteristics but don't provide comparative data on velocity estimation accuracy at different SNR ranges.",
+    "retrieval_time": "147.31 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "21744.88 ms"
+  },
+  "f20d7389-0bdb-45e8-a4ab-fd8af4845730": {
+    "response": "Visuals play a crucial role in conspiracy theory communication by providing \"immediate knowledge\" and serving as powerful tools for presenting complex narratives. According to the research, images help in: providing evidence and authenticating claims, discrediting mainstream narratives, exposing connections through pattern recognition (like network imagery), constructing enemy images, mapping coalitions (through collages), visualizing secrecy, and fostering emotional responses. The research notes that visuals often work together with text to create complex causal links or pseudo-evidence, such as in infographics or collages. While visuals can be ambiguous, they function as meaning-making tools that require context-sensitive interpretation, similar to textual content.",
+    "retrieval_time": "144.59 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "15811.16 ms"
+  },
+  "47e1947b-37af-4881-a6b5-375c1f6b6993": {
+    "response": "Based on the research documents, specifically Figure 3 (top graph) on page 8 which shows \"average profitability of submitted rankings by an ideal manipulator\" across different voting methods, Instant Runoff PUT shows the highest average profitability at 6 candidates. The graph compares various voting methods including Black's, Borda, Instant Runoff PUT, Minimax, Nanson, Plurality, Split Cycle, and Stable Voting, and Instant Runoff PUT demonstrates the highest value at the 6 candidates mark in the \"Ideal Manipulator, Uniform Utility Model\" graph.",
+    "retrieval_time": "124.15 ms",
+    "retrieval_mem": "0.04 MB",
+    "llm_time": "1509542.16 ms"
+  },
+  "0aa05517-ed7e-432f-b97c-162f97e7b803": {
+    "response": "Based on the research documents, typical latent dimensions for PDE numerical experiments are:\n\n- Boundary Value Problem: Solution dimension = 11\n- Steady-State Diffusion: Diffusion coefficient dimension = 32, Solution dimension = 16\n- Navier Stokes Equation: Initial vorticity dimension = 32, Vorticity at time snapshots (t=1,2,3) dimension = 32\n- Lotka Volterra Model: Both prey and predator trajectories dimension = 11\n\nThese dimensions were selected to keep the mean relative L2 error below a threshold while maintaining low dimensionality for effective modeling. For example, in the boundary value problem, reducing the dimension below 11 caused a significant error increase (from 1.3×10^-6 at dimension 11 to 9.7×10^-6 at dimension 9).",
+    "retrieval_time": "2295.86 ms",
+    "retrieval_mem": "-37.23 MB",
+    "llm_time": "17409.15 ms"
+  },
+  "ec8a9ccf-7f49-4924-bc92-f42d0e06b6f6": {
+    "response": "Kinetically constrained spin chains are quantum systems where certain transitions are restricted by motion constraints. They serve as a key prototype for structured ergodicity breaking in isolated quantum systems. Their significance lies in how they fragment conventional symmetry sectors into exponentially many disjoint blocks that can vary from ergodic to integrable within the same physical system. Depending on constraint locality, they produce different fragmentation levels and subdiffusive transport behaviors, with experimentally observed signatures. When combined with boundary drives, they exhibit hierarchies of degenerate steady states and can stabilize mixed states, noiseless subsystems, and decoherence-free subspaces that preserve information. These systems provide important insights into quantum thermalization and offer promising pathways for engineering controlled quantum dynamics in quantum simulators.",
+    "retrieval_time": "217.83 ms",
+    "retrieval_mem": "6.21 MB",
+    "llm_time": "17359.51 ms"
+  },
+  "6bc2ab72-a7ee-4cf6-a40f-4caf56d1533c": {
+    "response": "A foundation is consistent if every chain of deductions that produces a contradiction can be shown to have a logical error. This means the foundation provides \"complete reliability\" - the outcome of an error-free argument will never be contradicted by any other error-free argument, and won't introduce errors when used in further arguments. Consistency is a global property that applies to the entire mathematical development, not just individual results. While foundations generally cannot prove their own consistency (per Gödel's work), consistency can be tested empirically by making deductions and verifying that any contradictions are accounted for by logical errors.",
+    "retrieval_time": "134.27 ms",
+    "retrieval_mem": "8.07 MB",
+    "llm_time": "13906.85 ms"
+  },
+  "4effaf17-9f2d-4795-aa96-1b6958d24ace": {
+    "response": "Researchers can select optimal treatments or policies from interval-identified parameters by:\n\n1. Estimating sets of best-performing treatments/policies from data rather than relying on point identification\n2. Using data-dependent selection rules instead of simple \"plug-in\" approaches (which are suboptimal when parameters are interval-identified)\n3. Applying asymptotically optimal treatment choice rules, as referenced from Christensen et al. (2023)\n4. Recognizing that bounds on parameters like average treatment effects (ATEs) are not smooth functions of underlying parameters, requiring specialized methods\n\nThe research shows that standard inference tools fail after such data-dependent selection in partially-identified contexts, so the authors develop new inference methods (including conditional confidence intervals) that maintain validity after selection from estimated sets of best-performing options.",
+    "retrieval_time": "156.35 ms",
+    "retrieval_mem": "9.05 MB",
+    "llm_time": "38948.24 ms"
+  },
+  "5b171e52-b041-4179-8189-e4310989077d": {
+    "response": "PPCA makes specific distributional assumptions (γ ~ N(0, Ir) and ϵ ~ N(0, Ψ) with isotropic noise Ψ = σ²Id), while ELF does not make distributional assumptions about the parameters it estimates and assumes heteroscedastic noise (Ψ = diag(σ₁², σ₂², ..., σ_d²) with different variances across dimensions).",
+    "retrieval_time": "154.61 ms",
+    "retrieval_mem": "7.45 MB",
+    "llm_time": "19931.84 ms"
+  },
+  "9d48e0a3-23ab-4103-ba93-8f9b6e970b3b": {
+    "response": "A trivial H-Galois extension over $k$ means that the H-Galois extension $A$ is isomorphic to $H$ itself as an H-comodule algebra. According to Proposition A.1 in the document, when $k$ is an algebraically closed field, any H-Galois extension over $k$ is necessarily trivial. \n\nAn H-Galois extension is defined as a non-zero H-comodule algebra $A = (A,\\rho_A)$ such that the map $A \\otimes A \\to A \\otimes H$, $a \\otimes b \\mapsto a\\rho_A(b)$ is an isomorphism. In the trivial case, this extension $A$ doesn't just become isomorphic to $H$ after some base field extension (as would be the case for a general H-Galois extension, which is a \"twisted form\" of $H$), but is already isomorphic to $H$ over the base field $k$ itself.",
+    "retrieval_time": "126.77 ms",
+    "retrieval_mem": "5.01 MB",
+    "llm_time": "18128.55 ms"
+  },
+  "c560f421-2307-4d55-828d-429eb19e7555": {
+    "response": "No, a student cannot change her schoolmates without changing her own school under the DA mechanism. This property is called \"local non-bossiness,\" which the research shows is satisfied by the DA mechanism. As stated in the documents: \"under DA, a student cannot change her schoolmates without changing her own school.\" While students can affect others' assignments through preference changes, this only applies to students not assigned to the same school.",
+    "retrieval_time": "116.14 ms",
+    "retrieval_mem": "4.12 MB",
+    "llm_time": "15197.98 ms"
+  },
+  "f2729d71-0c0b-4be8-9da9-501a29dbfd28": {
+    "response": "The purpose of Unsolvable Problem Detection (UPD) is to evaluate whether Large Multimodal Models (LMMs) truly understand content by testing their ability to withhold answers when encountering unsolvable problems, rather than blindly providing incorrect responses. UPD assesses if models can recognize when a problem cannot be solved due to issues like absent correct answers, incompatible answer sets, or image-question mismatches. This approach verifies genuine comprehension, as a model that correctly identifies unsolvable problems while accurately solving standard problems demonstrates more robust understanding than one that simply answers all questions regardless of solvability.",
+    "retrieval_time": "130.85 ms",
+    "retrieval_mem": "7.26 MB",
+    "llm_time": "14797.02 ms"
+  },
+  "e7afef2d-29dd-4a15-b54e-80e281250f25": {
+    "response": "No, the color transformation process using libjpeg is not lossless. According to the research document, \"we also did all our experiments with the libjpeg color transformation that uses integers and thus is not lossless.\" The document further explains that libjpeg implementations \"round the result to the nearest integer and use only integer and bit shift... making them neither linear nor invertible,\" which prevents perfect reconstruction of the original data.",
+    "retrieval_time": "163.84 ms",
+    "retrieval_mem": "6.57 MB",
+    "llm_time": "9683.50 ms"
+  },
+  "f6d3ba15-6b01-45e4-8281-f70652e24ab5": {
+    "response": "Yes, the device exhibits a Schottky barrier at both the source-channel and channel-drain interfaces. The research documents specifically state that there is a Schottky barrier of 0.17eV at these interfaces in the vertical VS2/Ga2O2 heterostructure FET. The documents describe how this barrier affects electron transport through thermionic emission and tunneling mechanisms, and how it can be tuned by gate voltage (reducing from 0.17eV to 0eV in the on-state).",
+    "retrieval_time": "141.22 ms",
+    "retrieval_mem": "4.65 MB",
+    "llm_time": "9935.02 ms"
+  },
+  "322f14f3-79ed-4fc2-8f8f-b7d06e26e1e2": {
+    "response": "According to the research document, there is no significant difference in odd-to-even harmonic ratio between VGGSound and synthetic datasets. The document specifically states on page 6 that \"the synthetic sounds match several feature distributions well, such as Inharmonicity (Peeters, 2004), Odd-to-Even Harmonic Ratio (Martin & Kim, 1998), Pitch Salience (Ricard, 2004), and, to a lesser extent, Spectral Flatness (Peeters, 2004).\" This indicates that the odd-to-even harmonic ratio is one of the features where synthetic sounds closely match the distribution of real sounds from VGGSound.",
+    "retrieval_time": "146.29 ms",
+    "retrieval_mem": "6.79 MB",
+    "llm_time": "9224.40 ms"
+  },
+  "94932526-4983-4caa-b8bc-de65c672901d": {
+    "response": "The purpose of using multilevel modeling in DIF analysis for health survey data is to address the hierarchical nature of such data and overcome limitations of single-level approaches. Specifically, multilevel modeling: 1) handles violations of independence and homoscedasticity assumptions common in hierarchical data; 2) models how higher-level variables (like population density or distance to healthcare facilities) influence DIF at the individual level; 3) produces results generalizable to the population (not just the sample); 4) accommodates multi-group analyses beyond just two groups; and 5) provides better model fit and explains more variance than single-level models, ultimately enhancing the precision and reliability of health research findings.",
+    "retrieval_time": "161.18 ms",
+    "retrieval_mem": "4.12 MB",
+    "llm_time": "14600.17 ms"
+  },
+  "b1d8def7-afea-4b06-a20b-d2047d4a3fb5": {
+    "response": "The architecture-agnostic detection cost function (a-DCF) differs from traditional methods in several key ways:\n\n1. Unlike tandem DCF (t-DCF) which only works with CM-ASV cascade architectures, a-DCF is applicable to any spoofing-aware speaker verification (SASV) system architecture.\n\n2. While t-DCF requires two sets of detection scores and two thresholds (one for each subsystem), a-DCF needs only one set of scores and one threshold.\n\n3. a-DCF extends traditional DCF by incorporating a third class (spoofing attacks), making it specifically designed for spoofing-robust ASV systems with the formula: a-DCF = Ctar_miss·πtar·Ptar_miss + Cnon_fa·πnon·Pnon_fa + Cspf_fa·πspf·Pspf_fa.\n\n4. This makes a-DCF more flexible and practical for evaluating modern end-to-end systems where the traditional tandem approach doesn't apply.",
+    "retrieval_time": "126.09 ms",
+    "retrieval_mem": "4.83 MB",
+    "llm_time": "18696.27 ms"
+  },
+  "f8f2baf4-1b9c-4170-a087-445a4a15e56d": {
+    "response": "Cyclic components in currency networks indicate full user engagement with the economic system, where participants both buy and sell, enabling currency recirculation. The research shows that users participating in cycles demonstrate better performance over time compared to those in acyclic components. Cyclic components help distinguish between different user strategies - those in cycles are fully committed to regular system use, while acyclic components may reveal users who only collect currency from one-time accounts (suggesting potential misuse) or isolated groups trying the system temporarily. The presence of cycles is crucial for the payment system's functionality, as they allow currency to circulate through the network rather than being trapped in one-directional transactions.",
+    "retrieval_time": "174.78 ms",
+    "retrieval_mem": "4.39 MB",
+    "llm_time": "14866.08 ms"
+  },
+  "b6957146-85d0-471b-9783-f8f648e4c3c8": {
+    "response": "The winding number $Q(C)$ depends only on $\\theta'_1 = \\theta_1 - \\theta_2$, as stated in the first research document.",
+    "retrieval_time": "164.35 ms",
+    "retrieval_mem": "5.63 MB",
+    "llm_time": "9557.25 ms"
+  },
+  "437d4c98-2b83-4a5a-ab62-77ad651187b0": {
+    "response": "Quasi-thermostatic CRNs are significant because they have a well-defined mathematical structure where their steady state manifold can be parametrized as γ: Rq → X, λ ↦ xss ◦ exp(Uλ), resembling exponential families in information geometry. This creates a valuable link between chemical reaction network theory and statistics. They satisfy Birch's theorem, ensuring a unique intersection between the steady state manifold and any stoichiometric polytope. Importantly, their absolute sensitivities are constrained to αi ∈ [0, 1], and they exhibit a detailed balance symmetry (xiαi→j = xjαj→i) characteristic of equilibrium states. These properties make them mathematically tractable while serving as a foundational framework for understanding more complex reaction networks that may exhibit hypersensitivity (αi > 1) or negative sensitivities.",
+    "retrieval_time": "172.53 ms",
+    "retrieval_mem": "4.34 MB",
+    "llm_time": "16346.37 ms"
+  },
+  "e5e01958-6011-4690-a7c2-6ca516c51973": {
+    "response": "Stokes' theorem is crucial for analyzing time-dependent vector potentials because it properly relates the closed space-time line integral of the 4-vector potential (which determines the Aharonov-Bohm phase shift) to the surface integral of the electromagnetic field. The research shows that the standard 3-dimensional Stokes theorem cannot be directly applied to time-dependent cases, as spatial coordinates and time variables cannot be treated as independent in the integration. Instead, the 4-dimensional Stokes theorem must be used, which correctly accounts for the space-time nature of the problem. This is essential for understanding whether magnetic field contributions and induced electric fields cancel each other in time-dependent Aharonov-Bohm effects. The paper confirms that while some cancellation occurs between these contributions, the AB phase shift ultimately remains determined by the closed space-time line integral of the 4-vector potential.",
+    "retrieval_time": "228.62 ms",
+    "retrieval_mem": "3.87 MB",
+    "llm_time": "15690.18 ms"
+  },
+  "e63a096a-74c0-4b24-b472-a710edce96f2": {
+    "response": "Yes. Document 2410.00908v2.pdf on page 15 explicitly describes Figure 4 as \"Convention adopted for encoding index summations with permutations, mixed on the left and pure on the right.\" This figure shows how permutations σ_c are used to encode tensor index summations, with the text explaining that \"the cycles of the permutation σ_c correspond to the bi-colored cycles of edges with colors (c, D+1) in the graph.\" Additionally, page 48 references \"examples of Fig. 13\" in relation to trace operations using a \"D-tuple of permutations σ ∈ S^n_D.\"",
+    "retrieval_time": "123.95 ms",
+    "retrieval_mem": "3.21 MB",
+    "llm_time": "24704.80 ms"
+  },
+  "784a158d-dee3-400b-90e6-7f56ce7c6f92": {
+    "response": "Based on the provided research documents, I cannot give a complete explanation of what a Kármán vortex street is and how it's generated. The documents contain a likely typo referring to \"Kalman vortex street\" (which should be \"Kármán vortex street,\" named after Theodore von Kármán). \n\nOne document (2405.07312v3.pdf) mentions \"Learning the high-dimensional Kalman vortex street\" and states it involves \"a flow as a result of transverse non-slip movement of an oscillating cylinder,\" but doesn't provide further explanation of the phenomenon itself. The other documents discuss various vortex patterns and trajectories but don't specifically address Kármán vortex streets or their generation mechanism.",
+    "retrieval_time": "161.25 ms",
+    "retrieval_mem": "3.57 MB",
+    "llm_time": "20527.08 ms"
+  },
+  "4877fdf9-0047-4024-a160-dff6c8cc2304": {
+    "response": "Traditional subjective expected utility (SEU) assumes decision makers have a complete, fixed state space from the beginning. The research shows this creates limitations when objects are sampled over time because:\n\n1. Traditional SEU cannot handle situations where decision makers are initially unaware of some objects - they cannot form beliefs about specific unknown objects\n\n2. It assumes all possible outcomes are known in advance, but in reality, new \"novel\" objects can be discovered through sampling\n\n3. Standard SEU lacks a dynamic framework for updating beliefs as awareness grows - when new objects are encountered, the entire state space effectively changes\n\n4. It doesn't provide a way to form beliefs about the probability of encountering completely new (unforeseen) objects\n\nThe paper addresses this by introducing \"delabeled\" subjective expected utility, which allows decision makers to form beliefs about the occurrence of novelty and frequencies of unknown objects, even when they don't know the specific identities of those objects beforehand.",
+    "retrieval_time": "141.51 ms",
+    "retrieval_mem": "3.68 MB",
+    "llm_time": "19609.67 ms"
+  },
+  "49835b3f-160e-4166-8f75-3cf57b4743ab": {
+    "response": "The basic idea of finite difference methods is to approximate derivatives in differential equations using differences between function values at discrete points on a structured grid. This approach facilitates implementation by converting differential equations into algebraic equations that can be solved numerically.",
+    "retrieval_time": "105.52 ms",
+    "retrieval_mem": "3.66 MB",
+    "llm_time": "8876.12 ms"
+  },
+  "41a2bed3-9afa-46d7-a93e-f00da70e241d": {
+    "response": "No. According to the proof in the first research document, if the Leontief matrix I-A is singular, then for the equation [I-A]x = 0, the components x₁, ..., xₙ cannot be all positive or all negative. This is because when summing all equations, we get (1-∑αᵢ₁)x₁ + ... + (1-∑αᵢₙ)xₙ = 0, and since ∑αᵢⱼ = 1 (with αᵢⱼ > 0), each coefficient (1-∑αᵢⱼ) is positive. Therefore, if all xᵢ were positive, the sum would be positive (not zero), and if all xᵢ were negative, the sum would be negative (not zero).",
+    "retrieval_time": "175.21 ms",
+    "retrieval_mem": "5.67 MB",
+    "llm_time": "29989.44 ms"
+  },
+  "f4e743bc-694e-48c5-923d-36911a3ea034": {
+    "response": "Yes, according to the research document, biases on atmospheric inferences decrease with lower perturbation levels on pressure-broadening parameters. The text explicitly states: \"As expected (and as shown in the right panels of Figure 2), it shows that the biases on the atmospheric inferences decrease with the perturbation level.\" Figure 3 further demonstrates this relationship, showing that \"larger perturbations inducing stronger biases,\" which confirms that reducing perturbation levels leads to smaller biases in atmospheric property retrievals.",
+    "retrieval_time": "120.24 ms",
+    "retrieval_mem": "4.22 MB",
+    "llm_time": "7741.35 ms"
+  },
+  "ccc95c69-7e81-4ac9-a61c-a11a4bffcc1b": {
+    "response": "No, according to the research document, OpenAI was \"admirably hands off, once the projects were funded. By all accounts, they did not try to steer things.\" This is stated on page 18 of the document, which notes that most teams were happy with their experience and found OpenAI did not interfere with their work after funding was provided.",
+    "retrieval_time": "111.67 ms",
+    "retrieval_mem": "4.47 MB",
+    "llm_time": "11896.82 ms"
+  },
+  "2ee8e18e-07f7-40a7-91b0-47d514f6913b": {
+    "response": "Information about other agents plays a critical role in full implementation (but not partial implementation) in mechanism design. For partial implementation (where only one desirable equilibrium is needed), additional information about other agents doesn't provide benefits since incentive compatibility is preserved when such information is removed. However, for full implementation (where all equilibria must yield desirable outcomes), information about other agents' types can eliminate undesired equilibria. This allows social choice rules that weren't previously fully implementable to become fully implementable when agents have appropriate information about others. The paper shows there exists a sufficient condition where a social choice rule not fully implementable under no information about others can become fully implementable with additional information, provided this increased information is common knowledge among agents.",
+    "retrieval_time": "100.02 ms",
+    "retrieval_mem": "3.24 MB",
+    "llm_time": "15787.21 ms"
+  },
+  "7423ce6f-67b8-4f1e-9675-8e101e6eccd7": {
+    "response": "The axiom of positive involvement states that in social choice theory with ordinal preferences, adding a voter who ranks an alternative uniquely first to a preference profile cannot cause that alternative to go from winning to losing. This formalizes the democratic principle that increased voter support for a candidate should not harm that candidate's chances of winning.",
+    "retrieval_time": "107.66 ms",
+    "retrieval_mem": "2.29 MB",
+    "llm_time": "9808.60 ms"
+  },
+  "74d0f7b0-6470-4360-b247-88a33f88c61c": {
+    "response": "Transformers perform comparably to traditional two-stage least squares (2SLS) in standard endogeneity tasks, but significantly outperform both 2SLS and ordinary least squares (OLS) in complex scenarios. Specifically, they handle weak instruments, non-linear instrumental variables, and underdetermined IV problems more effectively. The research shows transformers can implement 2SLS through a bi-level gradient descent procedure with exponential convergence rate, and their in-context learning approach provides reliable predictions and coefficient estimates across various endogeneity levels.",
+    "retrieval_time": "105.82 ms",
+    "retrieval_mem": "3.18 MB",
+    "llm_time": "11912.40 ms"
+  },
+  "62dbc03c-7b38-467e-a81d-3b6376704017": {
+    "response": "No, loop unrolling is not performed on large loops with high trip counts. According to the research, \"For these large loops, we did not perform unrolling, as this would duplicate the loop body by the factor used, resulting in high resource utilization.\" Instead, the documents indicate that loop pipelining is applied to large loops with high trip counts, while unrolling is reserved for loops with small trip counts where resource constraints allow.",
+    "retrieval_time": "134.54 ms",
+    "retrieval_mem": "3.17 MB",
+    "llm_time": "10018.65 ms"
+  },
+  "58ee5bb5-32d5-46cb-86ab-d571a372d0ed": {
+    "response": "Based on the research documents provided, the formula for calculating water transport time (WTT) is derived from solving an equation that determines when 50% of particles have diffused out of a 1mm diameter sphere. \n\nThe key equation mentioned in the document (2408.06427v2.pdf) is:\n\n4@(2@<!),!I−0.5K2<!27)0.2#!.#L+√@4(2<!),!erfQ0.5√RST=0.50\n\nThis equation uses the error function (erf) approximation from Abramowitz and Stegun. The WTT is determined by solving for the time variable (represented as \"<\" in the document) as a function of the diffusion coefficient D.\n\nThe document explains that WTT represents \"the time it takes for 50% of an original ensemble to have diffused out of a 1mm diameter sphere\" for particles undergoing Brownian motion with diffusivity coefficient D and zero net drift. The calculation involves converting the 3D Gaussian probability distribution to spherical coordinates and integrating over the sphere.",
+    "retrieval_time": "110.54 ms",
+    "retrieval_mem": "3.16 MB",
+    "llm_time": "76904.66 ms"
+  },
+  "c0d71e2f-134d-43d2-ab0c-1d265c8bd590": {
+    "response": "Dareplane is a modular, open-source software platform designed to simplify complex experimental setups for brain-computer interface (BCI) research, with a specific focus on adaptive deep brain stimulation (aDBS). It addresses challenges in aDBS research by providing a technology-agnostic solution that supports multiple hardware interfaces, enables modular development, and allows reuse of generic processing steps across different BCI experiments. The platform aims to streamline aDBS experimentation while being adaptable to various research needs and hardware configurations.",
+    "retrieval_time": "152.16 ms",
+    "retrieval_mem": "2.95 MB",
+    "llm_time": "11959.54 ms"
+  },
+  "07126b91-2775-483a-bb6f-88b9d79b8fd0": {
+    "response": "Based on the provided research documents, the issue with DMAs (Designated Market Areas) in terms of time-series data characteristics is that using the average ad load in a DMA as an instrument potentially violates exclusion restrictions. As stated in the second document, \"differences in ad load across age groups may also be correlated with listening habits.\" This suggests that ad load variations across DMAs might not be independent of other factors affecting the outcome being studied, which is problematic for time-series analysis that relies on proper instrumental variables. The document indicates that while controlling for geographic and age fixed effects might make users comparable within the same age group and DMA, the fundamental issue of potential correlation between ad load and listening habits remains a concern for valid time-series analysis.",
+    "retrieval_time": "114.27 ms",
+    "retrieval_mem": "2.71 MB",
+    "llm_time": "32398.35 ms"
+  },
+  "130057d3-634b-4a08-9443-ad2dbf7f2144": {
+    "response": "Yes, one-inflation is conceptually similar to zero-inflation. Both address excess occurrences of a specific count value in data. While zero-inflation deals with an abnormal number of zeros (common in count data models), one-inflation specifically addresses an excess of \"1\" counts. The research shows one-inflation occurs when individuals learn to avoid subsequent events after the first occurrence (e.g., people learning to avoid additional arrests after their first arrest), creating more single-count observations than standard models predict. Just as zero-inflated models (like ZIP or ZINB) account for excess zeros, one-inflated models (like OIPP or OIZTNB) are designed to handle this specific pattern of excess ones in truncated count data.",
+    "retrieval_time": "104.98 ms",
+    "retrieval_mem": "2.11 MB",
+    "llm_time": "18067.20 ms"
+  },
+  "735295b4-c0c7-40cd-a479-f69c493b4708": {
+    "response": "Scoring rules are important for evaluating prediction models because they provide a systematic way to compare probabilistic predictions against observed outcomes. As mentioned in the research, they serve as \"a common tool in model evaluation assessing prediction models\" that quantitatively measure how well predicted probabilities match actual results. Scoring rules like Brier and Log scores allow for standardized evaluation of forecasts, and when contextualized with skill scores, they can show improvement over benchmark predictions. Proper scoring rules also encourage honest forecasting by properly rewarding accurate probability assessments, making them essential for reliable model evaluation in binary classification and other prediction tasks.",
+    "retrieval_time": "130.88 ms",
+    "retrieval_mem": "2.46 MB",
+    "llm_time": "14710.63 ms"
+  },
+  "96b3a0bc-9c08-46f2-9faf-b4c5b0361278": {
+    "response": "Based on the research documents provided, the decay widths for $\\Sigma_{b}^{* 0} \\rightarrow \\Sigma_{c}^{+} e \\bar{\\nu}_{e}$ and $\\Sigma_{b}^{* 0} \\rightarrow \\Sigma_{c}^{+} \\mu \\bar{\\nu}_{\\mu}$ are treated as essentially identical. \n\nThe document states: \"the decay width decreases by raising lepton mass that is consistent with the kinematical constraints.\" While this indicates that decay width depends on lepton mass, the authors group the electron and muon channels together in their ratio calculation:\n\nR = Γ[Σ*0_b → Σ+_c τ ν̄_τ] / Γ[Σ*0_b → Σ+_c e(μ) ν̄_e(μ)] = 0.29 ± 0.01\n\nThe notation \"e(μ) ν̄_e(μ)\" explicitly shows they're treating the electron and muon channels as having the same decay width. This is consistent with Standard Model expectations, where the small mass difference between electrons and muons has negligible effect on the decay width compared to the energy scale of these baryon decays, unlike the much heavier tau lepton channel which shows a significantly smaller decay width.",
+    "retrieval_time": "159.98 ms",
+    "retrieval_mem": "4.16 MB",
+    "llm_time": "27687.44 ms"
+  },
+  "8aa884c1-7102-4fe5-839c-2f8b7337f639": {
+    "response": "Quantum algorithms provide a significant speed-up for solving compressed Hamiltonians derived through methods like ab initio downfolding. While these compressed Hamiltonians maintain the essential physics of strongly-correlated materials, solving them remains \"exponentially difficult\" on classical computers. Quantum algorithms overcome this limitation by efficiently handling the computational complexity that makes these material-specific models challenging for classical systems.",
+    "retrieval_time": "118.20 ms",
+    "retrieval_mem": "1.71 MB",
+    "llm_time": "9908.79 ms"
+  },
+  "337aeef5-3269-4ba3-b4db-014e98bb65f5": {
+    "response": "Nitrogen oxides (NOx) are key precursors in the formation of tropospheric ozone (O₃). According to the research, ozone is not directly emitted but forms through chemical reactions between nitrogen oxides (NOx) and volatile organic compounds (VOCs) in the presence of sunlight and high temperatures. This explains why ozone concentrations typically peak during daytime in summer. Environmental studies analyze this relationship using statistical models, such as the regression model shown where log(O₃) is modeled as a function of log(NOx) along with other meteorological factors like wind components, temperature, solar radiation, VOCs, and humidity to control for potential confounders.",
+    "retrieval_time": "160.07 ms",
+    "retrieval_mem": "2.77 MB",
+    "llm_time": "13894.83 ms"
+  },
+  "a3daabd5-9b3b-4e52-9346-683d009904d3": {
+    "response": "Yes, lower NRMSE values are preferred for evaluating denoised image quality. According to the research document (page 4), \"Lower NRMSE values and higher PSNR and SSIM scores are preferred, indicating a closer resemblance to the high-count images and a higher level of image fidelity.\" The document explicitly states that NRMSE is used to evaluate how closely denoised images resemble high-count reference images, with lower values indicating better performance.",
+    "retrieval_time": "166.72 ms",
+    "retrieval_mem": "2.54 MB",
+    "llm_time": "6212.36 ms"
+  },
+  "57c2bbd1-5823-4dca-b4b3-245a6e99f0cb": {
+    "response": "It is a dominant strategy for candidate 1 to choose p1 = ω (the optimal policy), and this policy wins the election.",
+    "retrieval_time": "118.74 ms",
+    "retrieval_mem": "1.05 MB",
+    "llm_time": "11736.26 ms"
+  },
+  "497262f4-1e0d-4d61-9a49-f74e848d3750": {
+    "response": "Yes. The research shows volcanic aerosols have a statistically significant impact on global mean surface temperature with P < 0.001 (F = 7.72). The document states: \"both volcanic aerosols (F = 7.72; P < 0.001) and the El Niño/Southern Oscillation (F = 21.86; P < 0.001) Granger-cause changes in global mean surface temperature.\" It also notes that \"volcanic aerosols cause decreases to global surface temperatures.\" While anthropogenic aerosols are mentioned as part of total anthropogenic forcing, the specific P-value for anthropogenic aerosols alone isn't provided in the excerpts.",
+    "retrieval_time": "153.35 ms",
+    "retrieval_mem": "0.77 MB",
+    "llm_time": "17380.03 ms"
+  },
+  "a79e662c-7fe8-4248-b76e-e0198c828223": {
+    "response": "Yes, according to the research documents, register files are related when the same registers map to related values. Page 78 explicitly states: \"Register Files are related if the same register maps to related values.\" The document defines a register relation (R≈) where two register files A and A are related if for all registers x, when A(x) = v:t and A(x) = v:σ, and the values v and v are related (V≈) with t ≡ σ, then A R≈ A.",
+    "retrieval_time": "115.52 ms",
+    "retrieval_mem": "3.06 MB",
+    "llm_time": "14637.06 ms"
+  },
+  "98b3f108-ae2e-4a07-bfc2-fbc6300a725a": {
+    "response": "Yes, the power iteration method provides a lower bound on μ for structured uncertainties. The documents explicitly state that \"the lower bound algorithm (i.e., power iteration)\" computes this lower bound, and any particular uncertainty Δ̂ ∈ Δ̂ that satisfies det(Iₙ - HΔ̂) = 0 yields a lower bound μ(H) ≥ 1/‖Δ̂‖₂. The research cites Packard et al. (1988) and Packard & Doyle (1993) as the original sources for this method, noting that these lower bounds are often accurate in practice.",
+    "retrieval_time": "138.25 ms",
+    "retrieval_mem": "1.99 MB",
+    "llm_time": "14357.77 ms"
+  },
+  "bc8c668b-7f43-4bfa-a7ec-92b041650f60": {
+    "response": "I cannot answer this question as the parameter $\\left|\\frac{b}{a \\tau}\\right|$ does not appear in any of the provided research documents.",
+    "retrieval_time": "122.75 ms",
+    "retrieval_mem": "3.57 MB",
+    "llm_time": "11870.76 ms"
+  },
+  "aded5374-5db3-40bb-a913-ef27d1836210": {
+    "response": "Gaussian fits are used to analyze filament profiles in cosmological studies by modeling the transverse section of filaments with the function T = Aexp(-Y²/2wt²) + C, where A is the peak brightness temperature, wt represents the filament width, and C is the offset from zero. This fitting allows researchers to:\n\n1. Quantify filament width (wt) from observational data\n2. Separate filament signal from background noise\n3. Estimate mean filament signal and its standard deviation\n4. Calculate physical properties like filament radius using r ≈ wt × 5.05 h⁻¹ Mpc\n5. Determine filament column density through statistical analysis\n\nThe Gaussian width parameter (wt) also defines the region for calculating lengthwise section profiles (|Y|≤wt), enabling comprehensive characterization of cosmic filament structures in observational data.",
+    "retrieval_time": "115.02 ms",
+    "retrieval_mem": "2.06 MB",
+    "llm_time": "23399.40 ms"
+  },
+  "3cf87346-f5ca-42df-853c-33b1e33a722c": {
+    "response": "The principal logarithm of an $N \\times N$ matrix $A$ is defined as:\n\n$$\\log(A) = \\frac{1}{2\\pi i} \\int_{\\gamma} \\log(z) (zI_N - A)^{-1} dz$$\n\nwhere:\n- The matrix $A$ must have a spectrum that does not contain $(-\\infty, 0]$ in $\\mathbb{C}$ (no negative real eigenvalues or zero)\n- $\\log(z)$ is the principal logarithm in the complex plane\n- $\\gamma$ is a closed curve in $\\mathbb{C} \\setminus (-\\infty, 0]$ that contains the eigenspectrum of $A$\n\nThis definition appears in Appendix D.1 of the provided research documents as the formal definition of the principal matrix logarithm.",
+    "retrieval_time": "181.99 ms",
+    "retrieval_mem": "2.21 MB",
+    "llm_time": "21127.30 ms"
+  },
+  "d8c44a2c-02e9-4601-a2e2-46d1fdb8a050": {
+    "response": "In hyperbolic geometry, a manifold refers specifically to a hyperbolic space, which is a type of Riemannian manifold with constant negative sectional curvature everywhere. According to the research documents, a manifold in general is an n-dimensional topological space where at each point x, the tangent space TxM is Euclidean (R^n). When this manifold is paired with Riemannian metric tensors (gx: TxM×TxM→R), it becomes a Riemannian manifold (M,g). A Riemannian manifold qualifies as a hyperbolic space when its sectional curvature is both negative and constant throughout the entire space. This special curvature property distinguishes hyperbolic geometry from Euclidean geometry (zero curvature) and spherical geometry (positive curvature).",
+    "retrieval_time": "126.00 ms",
+    "retrieval_mem": "2.71 MB",
+    "llm_time": "18563.93 ms"
+  },
+  "7b269fb3-f077-440e-8735-dae7b4050c71": {
+    "response": "Shared structures in neural activity improve learning and adaptation by enabling neural systems to reuse \"dynamical motifs\" when tasks have overlapping cognitive components, which facilitates few-shot adaptation to novel tasks. Research shows that learning shared structure across environments allows for rapid learning and adaptive behavior, as biological and artificial neural networks demonstrate similar latent dynamics when engaged in related tasks. These conserved structures act as evolved or learned adaptations to environments, helping systems generalize to new settings without starting from scratch. This principle has been successfully applied in machine learning to create models capable of faster adaptation to changing conditions.",
+    "retrieval_time": "134.71 ms",
+    "retrieval_mem": "2.28 MB",
+    "llm_time": "21696.51 ms"
+  },
+  "b11b3d95-cb6d-49f9-b72e-7c28b9f20a9e": {
+    "response": "Higher signal-to-noise ratio (SNR) significantly improves source localization accuracy. According to the research, at SNR* = 12 dB, only 8 out of 11 sources were accurately estimated, while at SNR* = 20 dB, all 11 sources were precisely estimated. This demonstrates a clear positive correlation between SNR levels and localization performance, with higher SNR values yielding more accurate source position estimates. The research shows that noise-afflicted sensor data presents challenges for localization systems, and improved SNR directly enhances the system's ability to correctly identify source locations.",
+    "retrieval_time": "132.36 ms",
+    "retrieval_mem": "1.49 MB",
+    "llm_time": "13869.34 ms"
+  },
+  "d9826292-314c-478e-b8d6-a1ccd6c388e2": {
+    "response": "The research documents indicate a significant relationship between Halin's end-degree conjecture (HC) and the Singular Cardinal Hypothesis (SCH). Specifically:\n\n1. The paper states they \"comment on the relationship between HC and the Singular Cardinal Hypothesis, deriving consistency strength from failures of the former.\"\n\n2. Under GCH (which implies SCH), HC(κ) holds for all cardinals not excluded by other constraints.\n\n3. Most notably, the authors verify that \"Halin's conjecture fails on finite intervals of successors of singular cardinals in Meremovich's model,\" which is described as \"a new independence result on HC.\"\n\n4. This suggests that in models where SCH fails in specific ways (like Meremovich's model), HC can fail for certain successors of singular cardinals.\n\n5. The paper also establishes that there is a proper class of cardinals κ for which Halin's end-degree conjecture holds within ZFC.\n\nThis demonstrates that the truth value of Halin's conjecture for certain cardinals is connected to the behavior of cardinal arithmetic as governed by SCH.",
+    "retrieval_time": "133.46 ms",
+    "retrieval_mem": "2.59 MB",
+    "llm_time": "30390.30 ms"
+  }
+}

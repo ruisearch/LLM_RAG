@@ -147,6 +147,13 @@ try:
         base_url="https://sg.uiuiapi.com/v1", # uiuiapi
         model="gpt-4o" # the evaluation llm is gpt-4o
     )
+    # # test qwen-plus for testing
+    # api_key = os.getenv("DASHSCOPE_API_KEY")
+    # llm = ChatOpenAI(
+    #     api_key=SecretStr(api_key) if api_key else None,
+    #     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1", 
+    #     model="qwen-plus" # the evaluation llm is qwen-plus
+    # )
     dataset = []
     dataset.append(
         {
@@ -162,11 +169,17 @@ try:
     result = evaluate(dataset=evaluation_dataset,metrics=\
         [LLMContextRecall(), Faithfulness(), FactualCorrectness()],llm=evaluator_llm)
     print(result)
+
+    # evaluation llm is gpt-4o:
     # first exp:{'context_recall': 0.5000, 'faithfulness': 0.9231, 'factual_correctness(mode=f1)': 0.1300}
     # second exp: {'context_recall': 0.5000, 'faithfulness': 0.8462, 'factual_correctness(mode=f1)': 0.2700}
     # use gpt-5:
     # {'context_recall': 0.5000, 'faithfulness': 0.6154, 'factual_correctness(mode=f1)': 0.0000}
     # evaluation costs 78.29 s
+    
+    # evaluation llm is qwen-plus:
+    # {'context_recall': 0.5000, 'faithfulness': 1.0000, 'factual_correctness(mode=f1)': 0.1100}
+    # costs 29.10 s
     end_time = time.time()
     cost = end_time - start_time
     print(f"evaluation costs {cost:.2f} s") # 17.96 s
