@@ -1,0 +1,8 @@
+{
+  "5ec42459-5685-4f8b-ab52-d63da65470e1": {
+    "response": "Production tax credits (PTC) significantly incentivize new zero-carbon energy projects by providing a $27.50/MWh credit for the first 10 years of operation, with an additional 10% bonus for projects in energy communities. This credit reduces variable costs, enhancing project viability. However, its impact is temporally limited to 10 years, requiring models to account for its present value and amortization. The PTC is applied to variable costs per MWh, distinct from investment tax credits, and varies in implementation across models (e.g., TEMOA/USENSYS vs. Switch/GenX).",
+    "retrieval_time": "4658.20 ms",
+    "retrieval_mem": "334.02 MB",
+    "llm_time": "11073.86 ms"
+  }
+}

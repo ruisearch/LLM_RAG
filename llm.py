@@ -41,11 +41,34 @@ DOCUMENT_TO_STR = PromptTemplate.from_template(
     template= "Source Document: {source}, Page {page}:\n{page_content}"
 )
 
+# system_prompt without the priority statememt (combined with method1 in _combine_documents)
 system_prompt = """You're a helpful research assistant, who answers questions based on provided research documents in a clear way and easy-to-understand way.
 If there are no research documents, or the research documents are irrelevant to answering the question, simply reply that you can't answer.
 Please reply with just the brief answer.
 If you're unable to answer the question, do not list sources.
 """
+
+# system prompt with the priority statement (combined with method2 in _combine_documents)
+# exeriment show it is useless
+# system_prompt = """You're a helpful research assistant, who answers questions based on provided research documents in a clear way and easy-to-understand way.
+
+# IMPORTANT: The research documents are provided with priority labels indicating their relevance to the question:
+# - [Highest Priority (Most Relevant)]: These documents are most likely to contain the answer
+# - [High Priority (Highly Relevant)]: These documents are very relevant to the question
+# - [Medium Priority (Moderately Relevant)]: These documents may contain useful information
+# - [Low Priority (Less Relevant, Rank X)]: These documents are less likely to be relevant
+
+# When answering:
+# 1. PRIORITIZE information from higher priority documents
+# 2. Start with information from "Highest Priority" and "High Priority" documents
+# 3. Use lower priority documents only to supplement or verify information from higher priority sources
+# 4. If higher priority documents provide a complete answer, you may not need to reference lower priority ones
+
+# If there are no research documents, or the research documents are irrelevant to answering the question, simply reply that you can't answer.
+# Please reply with just the brief answer.
+# If you're unable to answer the question, do not list sources.
+# # """
+
 FINAL_QUESTION = ChatPromptTemplate.from_messages([
     ("system", system_prompt),
     ("human","""## Research:
@@ -224,17 +247,52 @@ def getChatChain(llm, db: Chroma, debug:bool, local_model: bool):
     return chat
 
 def _combine_documents(docs: list, String_format=DOCUMENT_TO_STR, \
-    separator="\n\n")->str:
+    separator="\n\n", return_str:bool = True)->str|list:
     """combine a list of documents to a string
 
     Args:
         docs (list): list of documents
+        String_format: format template for documents
+        separator (str): separator between documents
+        return_str (bool): whether return str or the list
 
     Returns:
-        str: string contains all documents
+        str: string contains all documents (will input to LLM as the context)
+        list: the doc list for debug (if retrun_str set to False)
     """
+    # method1: just combine the context into a string
     doc_strings = [format_document(doc, String_format) for doc in docs]
-    return separator.join(doc_strings)
+    if return_str:
+        # return str
+        return separator.join(doc_strings)
+    else:
+        # return list for debug
+        return doc_strings
+
+    # method2: add the statements that illustrate the priority of docs
+    # experiments show that it is useless.
+    # doc_strings = []
+    # for i, doc in enumerate(docs):
+    #     # Lower index means higher priority (higher similarity)
+    #     if i == 0:
+    #         priority_text = "Highest Priority (Most Relevant)"
+    #     elif i == 1:
+    #         priority_text = "High Priority (Highly Relevant)"
+    #     elif i == 2:
+    #         priority_text = "Medium Priority (Moderately Relevant)"
+    #     else:
+    #         priority_text = f"Low Priority (Less Relevant, Rank {i+1})"
+
+    #     formatted_doc = format_document(doc, String_format)
+    #     # Add clear priority information before the document
+    #     doc_with_priority = f"[{priority_text}]\n{formatted_doc}"
+    #     doc_strings.append(doc_with_priority)
+    # if return_str:
+    #     # return str
+    #     return separator.join(doc_strings)
+    # else:
+    #     # return list for debug
+    #     return doc_strings
 
 def measure_llm_time(llm, input_dict, local_model: bool, debug: bool, metrics_dict=None):
     """
@@ -246,7 +304,7 @@ def measure_llm_time(llm, input_dict, local_model: bool, debug: bool, metrics_di
         local_model: Whether using local model
         debug: Whether to enable debug mode
         metrics_dict: Dictionary to store performance metrics
-        
+
     Returns:
         Response from the LLM
     """
@@ -327,19 +385,20 @@ def process_single_question(llm, retriever, question: str, debug: bool, local_mo
                 "question": standalone_question
             }
             return final_question
-        
+
         # 3. Build retrieved_documents (same as getChatChain)
+        # use RunnablePassthrough to make it a Runnable for chain (the first component should be a Runnable)
         retrieved_documents = RunnablePassthrough.assign(
-            docs=lambda x: measure_retrieval_cost(x),
+            docs=lambda x: measure_retrieval_cost(x), # a list of document objects
             question=lambda x: x["question"]
         )
-        
+
         # 4. Build answer (same as getChatChain)
         answer = {
             "answer": question_str | FINAL_QUESTION | (lambda x: measure_llm_time(llm, x, local_model, debug, metrics)),
-            "docs": itemgetter("docs")
+            "docs": itemgetter("docs") # a list of document objects
         }
-        
+
         # 5. Create the final chain (same as getChatChain)
         final_chain = retrieved_documents | answer
         
@@ -356,10 +415,11 @@ def process_single_question(llm, retriever, question: str, debug: bool, local_mo
         retrieval_time = metrics.get('retrieval_time', 0)
         retrieval_mem = metrics.get('retrieval_mem', 0)
         llm_time = metrics.get('llm_time', 0)
-        
+
         # Build context for return
         context_str = _combine_documents(docs)
-        context_list = [format_document(doc, DOCUMENT_TO_STR) for doc in docs]
+        context_list = [format_document(doc, DOCUMENT_TO_STR) for doc in docs] # just return the doc without priority because priority is not in DB
+        # context_list = _combine_documents(docs, return_str=False) # return list
         retrieval_time_str = f"{retrieval_time:.2f} ms"
         retrieval_mem_str = f"{retrieval_mem:.2f} MB"
         llm_time_str = f"{llm_time:.2f} ms"
@@ -372,7 +432,7 @@ def process_single_question(llm, retriever, question: str, debug: bool, local_mo
             "retrieval_mem": retrieval_mem_str,
             "llm_time": llm_time_str
         }
-        
+
     except Exception as e:
         print(f"Error processing question: {e}")
         return None

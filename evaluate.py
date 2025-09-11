@@ -81,11 +81,11 @@ def main(response_path:str, context_path:str):
         result = evaluate(dataset=evaluate_dataset,metrics=\
             [LLMContextRecall(), Faithfulness(), FactualCorrectness()],llm=evaluator_llm)
         
-        # just compute recall
+        # ## just compute recall
         # result = evaluate(dataset=evaluate_dataset,metrics=\
         #     [FactualCorrectness(mode='recall')],llm=evaluator_llm)
         
-        # just compute precision
+        # ## just compute precision
         # result = evaluate(dataset=evaluate_dataset,metrics=\
         #     [FactualCorrectness(mode='precision')],llm=evaluator_llm)
         end_time = time.time()
