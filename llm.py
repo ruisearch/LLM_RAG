@@ -5,6 +5,7 @@ from operator import itemgetter
 import time
 import os
 import psutil
+import re
 # from memory_profiler import profile
 # from langchain.memory import ConversationBufferMemory
 from langchain_ollama import ChatOllama
@@ -410,6 +411,7 @@ def process_single_question(llm, retriever, question: str, debug: bool, local_mo
         response = result["answer"]
         docs = result["docs"]
         answer_content = response.content if hasattr(response, "content") else str(response)
+        answer_content = remove_thinking_process(answer_content)
         
         # Extract performance metrics from the metrics dictionary
         retrieval_time = metrics.get('retrieval_time', 0)
@@ -436,6 +438,18 @@ def process_single_question(llm, retriever, question: str, debug: bool, local_mo
     except Exception as e:
         print(f"Error processing question: {e}")
         return None
+
+def remove_thinking_process(answer:str):
+    """remove the thinking process in the answer
+
+    Args:
+        answer (str): the answer may contain thinking process
+    """
+    if "<think>" in answer and "</think>" in answer:
+        new_answer = re.sub(r'<think>.*?</think>','',answer, flags=re.DOTALL)
+        return new_answer
+    else:
+        return answer
 # def clear_conversation_history():
 #     global _memory_instance
 #     if _memory_instance is not None:
